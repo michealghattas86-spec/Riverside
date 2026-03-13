@@ -8,7 +8,7 @@ const team = [
     role: "Dentist",
     qual: "BDS (JCU)",
     specialty: "Implant Dentistry",
-    photo: "/public/charl.jpg",
+    photo: "/charl.jpg",
     bio: ["Dr. Jacob graduated from James Cook University with a Bachelor of Dental Surgery and also holds a Veterinary Medicine degree from Cairo University (2003).", "He believes in patient education for optimal oral health, with a particular interest in implant dentistry across all aspects of general practice."],
   },
   {
@@ -16,7 +16,7 @@ const team = [
     role: "Dentist",
     qual: "BDS (Gujarat)",
     specialty: "Root Canal & Invisalign",
-    photo: "/public/rony.jpg",
+    photo: "/DrGhandi.jpg",
     bio: ["Dr. Gandhi graduated from Gujarat University in 2006 and worked as a primary dentist in India for over 26 years before joining our team.", "He has completed over 5,000 root canal treatments and is certified in Invisalign. Outside the clinic he enjoys cricket and travelling with family."],
   },
   {
@@ -24,7 +24,7 @@ const team = [
     role: "Dentist",
     qual: "BDS · MPH (Deakin)",
     specialty: "Surgical & Cosmetic",
-    photo: "/public/jatin.jpg",
+    photo: "/jatin.jpg",
     bio: ["Dr. Chavda graduated from Rajiv Gandhi University in 2014 and holds a postgraduate Master of Public Health from Deakin University.", "He sees dentistry as the perfect mix of medicine, science and art — his expertise lies in surgical and cosmetic dentistry."],
   },
   {
@@ -32,7 +32,7 @@ const team = [
     role: "Dentist",
     qual: "BDS (JCU)",
     specialty: "Smile Reconstruction",
-    photo: "/public/james.jpg",
+    photo: "",
     bio: ["Dr. Liu is a James Cook University graduate who has practised in Hervey Bay and Brisbane before being drawn to Tasmania's beautiful natural environment.", "Gentle, caring and thorough — he loves rebuilding smiles and giving patients back their confidence."],
   },
   {
@@ -40,7 +40,7 @@ const team = [
     role: "Dentist",
     qual: "",
     specialty: "Clear Aligners & Orthodontics",
-    photo: "/public/shilpa.jpg",
+    photo: "",
     bio: ["Dr. Shilpa's top priority is caring for anxious patients. She uses a patient-focused approach to create a stress-free environment.", "She advocates strongly for preventive care tailored to each individual and serves the Riverside and Launceston communities with great warmth."],
   },
   {
@@ -48,7 +48,7 @@ const team = [
     role: "Oral Health Therapist",
     qual: "BOHSc (La Trobe)",
     specialty: "Prevention & Gum Health",
-    photo: "/public/lauren.jpg",
+    photo: "/Lauren.jpg",
     bio: ["Lauren graduated in 2013 with a Bachelor of Oral Health Science from La Trobe University and is qualified in both dental therapy and dental hygiene.", "Her focus is the prevention and treatment of dental decay and gum disease. A Tasmanian local, she loves travelling and the beach."],
   },
   {
@@ -56,7 +56,7 @@ const team = [
     role: "Aesthetic Nurse",
     qual: "RN",
     specialty: "Holistic Skin & Aesthetics",
-    photo: "/public/tassiana.jpg",
+    photo: "/Tassiana.jpg",
     bio: ["Tassiana is a compassionate Registered Nurse and member of the Cosmetic Nurse Association, Australian Dermatology Nurses Association, and ABIC.", "Her passion is holistic skin health — empowering clients to embrace their natural beauty with evidence-based, personalised care."],
   },
 ];
@@ -102,18 +102,20 @@ export default function OurTeamPage() {
                   <div className="team-card-front bg-forest/30 border border-champagne/10 overflow-hidden flex flex-col">
                     {/* Photo area */}
                     <div className="relative flex-1 bg-forest/50 overflow-hidden">
-                      <Image
-                        src={member.photo}
-                        alt={member.name}
-                        fill
-                        className="object-cover object-top opacity-80"
-                      />
-                      {/* Fallback initials shown if image missing via CSS overlay approach */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="font-display text-5xl font-bold text-champagne/20 select-none">
-                          {getInitials(member.name)}
-                        </span>
-                      </div>
+                      {member.photo ? (
+                        <Image
+                          src={member.photo}
+                          alt={member.name}
+                          fill
+                          className="object-cover object-top opacity-80"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-forest/60">
+                          <span className="font-display text-6xl font-bold text-champagne/30 select-none">
+                            {getInitials(member.name)}
+                          </span>
+                        </div>
+                      )}
                       {/* Bottom gradient */}
                       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ink/80 to-transparent" />
                       {/* Specialty badge */}
