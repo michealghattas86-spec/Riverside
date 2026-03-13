@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/special-offers/free-kids-dental", priority: 0.8, freq: "monthly" },
     { path: "/special-offers/teeth-whitening", priority: 0.8, freq: "monthly" },
     { path: "/contact-us", priority: 0.9, freq: "monthly" },
+    { path: "/book-online", priority: 1.0, freq: "weekly" },
     { path: "/feedback-and-complaints", priority: 0.5, freq: "yearly" },
   ];
 
