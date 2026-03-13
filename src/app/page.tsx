@@ -169,14 +169,14 @@ export default function HomePage() {
       <div className="bg-ink border-y border-champagne/15 py-10 overflow-hidden relative">
         <div className="absolute inset-0 opacity-[0.02]" style={{backgroundImage: "repeating-linear-gradient(90deg, rgb(201,168,76) 0px, rgb(201,168,76) 1px, transparent 1px, transparent 80px)"}} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-          <p className="font-body text-xs uppercase tracking-[0.4em] text-champagne/50 text-center mb-8">
+          <p className="font-body text-sm uppercase tracking-[0.4em] text-champagne/70 text-center mb-8">
             Preferred Providers &amp; Payment Partners
           </p>
           <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-4">
             {providers.map((p, i) => (
               <div
                 key={p.name}
-                className="provider-card flex flex-col items-center justify-center gap-3 py-5 px-3 border border-champagne/10 bg-forest/20"
+                className="provider-card flex flex-col items-center justify-center gap-3 py-6 px-4 border border-champagne/10 bg-forest/20 rounded-2xl"
                 style={{ animationDelay: `${i * 0.4}s` }}
               >
                 <div className="relative h-8 w-full flex items-center justify-center">
