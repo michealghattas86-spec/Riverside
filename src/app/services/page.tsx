@@ -77,7 +77,7 @@ export default function ServicesPage() {
             <p className="font-body text-ink/60 leading-relaxed mb-8">
               We are conveniently located in the Health and Wellbeing Centre at 1 Windsor Drive, Riverside — just minutes from Launceston city centre, with 112 free car parks and full disability access.
             </p>
-            <Link href="/contact-us" className="btn-gold">Book an Appointment →</Link>
+            <Link href="/book-online" className="btn-gold">Book an Appointment →</Link>
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[
@@ -165,7 +165,7 @@ export default function ServicesPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="tel:0363110520" className="btn-gold">📞 (03) 6311 0520</a>
-            <Link href="/contact-us" className="btn-outline-ink">Book Online →</Link>
+            <Link href="/book-online" className="btn-outline-ink">Book Online →</Link>
           </div>
         </div>
       </section>
