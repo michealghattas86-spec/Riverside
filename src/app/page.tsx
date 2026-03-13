@@ -18,28 +18,36 @@ const stats = [
 
 const differences = [
   {
-    num: "01",
-    title: "No Gap Payment",
-    desc: "Preferred providers for Medibank, Bupa, CBHS & NIB. No unexpected out-of-pocket costs.",
+    icon: "♡",
+    title: "No Out-of-Pocket Gap",
+    desc: "As preferred providers for Medibank, Bupa, CBHS and NIB, most of your treatment is covered. We believe cost should never stand between you and a healthy smile.",
     href: "/special-offers/payment-options",
+    stat: "4 major funds",
+    statLabel: "preferred provider",
   },
   {
-    num: "02",
-    title: "Full Cost Transparency",
-    desc: "Every patient receives a personalised, itemised plan before any treatment begins.",
+    icon: "◎",
+    title: "You Know the Cost Before We Begin",
+    desc: "Every patient receives a personalised, itemised treatment plan upfront — no surprises, no hidden fees. Just honest care and complete transparency.",
     href: "/special-offers/treatment-plans",
+    stat: "100%",
+    statLabel: "cost transparency",
   },
   {
-    num: "03",
-    title: "Flexible Payments",
-    desc: "Denticare, Zip Pay, SmileCo, DVA bulk billing, and Medicare CDBS for eligible children.",
+    icon: "◇",
+    title: "Flexible Ways to Pay",
+    desc: "From Denticare and Zip Pay to DVA bulk billing and Medicare CDBS for kids — we offer more payment options than most, because your health shouldn't wait.",
     href: "/special-offers/payment-options",
+    stat: "6+",
+    statLabel: "payment options",
   },
   {
-    num: "04",
-    title: "Extended Hours",
-    desc: "Open Monday to Friday until 7pm and Saturdays until 5pm. We work around your life.",
+    icon: "◈",
+    title: "Hours That Work Around You",
+    desc: "Open Monday to Friday until 7pm and Saturdays until 5pm. Early mornings, after work, weekends — we're here when you need us most.",
     href: "/book-online",
+    stat: "Mon – Sat",
+    statLabel: "extended hours",
   },
 ];
 
@@ -195,102 +203,70 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── WHY CHOOSE US — REDESIGNED ─────────────── */}
-      <section className="py-28 bg-ink relative overflow-hidden noise">
-        <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 60px, rgb(200,170,100) 60px, rgb(200,170,100) 61px), repeating-linear-gradient(90deg, transparent, transparent 60px, rgb(200,170,100) 60px, rgb(200,170,100) 61px)"}} />
-        <div className="absolute top-0 right-0 w-[40vw] h-[40vw] rounded-full bg-forest/40 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-champagne/5 blur-3xl" />
+      {/* ── WHY CHOOSE US ──────────────────────────── */}
+      <section className="py-28 bg-cream relative overflow-hidden">
+        {/* Subtle diagonal accent */}
+        <div className="absolute top-0 right-0 w-[35vw] h-full bg-warm clip-diagonal-reverse opacity-60 pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="mb-20 max-w-xl">
-            <p className="font-body text-champagne text-xs tracking-[0.4em] uppercase mb-4">Why Choose Us</p>
-            <h2 className="font-display text-5xl lg:text-6xl font-light italic text-cream leading-none">
-              Dentistry done<br />
-              <em className="not-italic font-semibold shimmer-text">differently.</em>
-            </h2>
-            <div className="w-16 h-px bg-champagne mt-6" />
+
+          {/* Header */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-end mb-20">
+            <div>
+              <p className="font-body text-champagne text-xs tracking-[0.4em] uppercase mb-4">Why Choose Us</p>
+              <h2 className="font-display text-5xl lg:text-6xl font-light italic text-ink leading-tight">
+                The clinic we&apos;d choose<br />
+                <em className="not-italic font-semibold">if we were the patient.</em>
+              </h2>
+              <span className="gold-rule mt-6 block" />
+            </div>
+            <p className="font-body text-ink/50 text-base leading-relaxed lg:max-w-md lg:ml-auto">
+              We built Riverside No Gap Dental around a simple question — what would the ideal dental experience look like? The answer shaped everything from our hours to our pricing.
+            </p>
           </div>
 
-          {/* Top two panels */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-champagne/10">
-            {/* Large featured panel */}
-            <Link
-              href={differences[0].href}
-              className="group relative bg-forest/30 hover:bg-forest/60 transition-all duration-500 p-12 lg:p-16 flex flex-col justify-between min-h-[340px] overflow-hidden"
-            >
-              <div className="absolute bottom-0 right-0 font-display text-[10rem] font-bold text-champagne/5 leading-none select-none group-hover:text-champagne/10 transition-colors duration-500 pr-4 pb-2">
-                {differences[0].num}
-              </div>
-              <div>
-                <div className="w-10 h-px bg-champagne mb-8 group-hover:w-20 transition-all duration-500" />
-                <h3 className="font-display text-3xl lg:text-4xl font-semibold text-cream mb-4 group-hover:text-champagne transition-colors duration-300">
-                  {differences[0].title}
-                </h3>
-                <p className="font-body text-cream/50 text-base leading-relaxed max-w-sm">
-                  {differences[0].desc}
-                </p>
-              </div>
-              <p className="font-body text-xs uppercase tracking-[0.3em] text-champagne/60 group-hover:text-champagne transition-colors mt-8">
-                Learn More →
-              </p>
-            </Link>
+          {/* Cards — alternating horizontal rows */}
+          <div className="space-y-5">
+            {differences.map((d, i) => (
+              <Link
+                key={d.title}
+                href={d.href}
+                className={`group flex flex-col sm:flex-row items-stretch gap-0 overflow-hidden border border-ink/5 hover:border-champagne/40 transition-all duration-500 hover:shadow-xl ${i % 2 === 0 ? "bg-white" : "bg-warm"}`}
+              >
+                {/* Stat accent block */}
+                <div className={`flex-shrink-0 flex flex-col items-center justify-center px-10 py-8 sm:py-0 sm:w-48 transition-colors duration-500 ${i % 2 === 0 ? "bg-forest group-hover:bg-emerald" : "bg-ink group-hover:bg-forest"}`}>
+                  <p className="font-display text-3xl font-bold text-champagne leading-none mb-1">{d.stat}</p>
+                  <p className="font-body text-[9px] uppercase tracking-widest text-cream/50 text-center">{d.statLabel}</p>
+                </div>
 
-            {/* Two stacked smaller panels */}
-            <div className="flex flex-col gap-px">
-              {[differences[1], differences[2]].map((d) => (
-                <Link
-                  key={d.num}
-                  href={d.href}
-                  className="group relative bg-forest/20 hover:bg-forest/50 transition-all duration-500 p-10 lg:p-12 flex flex-col justify-between overflow-hidden flex-1"
-                >
-                  <div className="absolute bottom-0 right-0 font-display text-[7rem] font-bold text-champagne/5 leading-none select-none group-hover:text-champagne/10 transition-colors duration-500 pr-3 pb-1">
-                    {d.num}
-                  </div>
-                  <div>
-                    <div className="w-6 h-px bg-champagne mb-4 group-hover:w-14 transition-all duration-500" />
-                    <h3 className="font-display text-2xl font-semibold text-cream mb-2 group-hover:text-champagne transition-colors duration-300">
+                {/* Icon + content */}
+                <div className="flex items-center gap-8 px-8 py-8 flex-1">
+                  <span className="hidden sm:block text-3xl text-champagne/40 group-hover:text-champagne transition-colors duration-300 flex-shrink-0">
+                    {d.icon}
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="font-display text-xl lg:text-2xl font-semibold text-ink mb-2 group-hover:text-emerald transition-colors duration-300">
                       {d.title}
                     </h3>
-                    <p className="font-body text-cream/50 text-sm leading-relaxed">{d.desc}</p>
+                    <p className="font-body text-sm text-ink/50 leading-relaxed max-w-2xl">{d.desc}</p>
                   </div>
-                  <p className="font-body text-xs uppercase tracking-[0.3em] text-champagne/60 group-hover:text-champagne transition-colors mt-6">
-                    Learn More →
-                  </p>
-                </Link>
-              ))}
-            </div>
+                  <span className="hidden lg:block font-body text-xs uppercase tracking-[0.3em] text-champagne/50 group-hover:text-champagne transition-colors duration-300 flex-shrink-0 pr-4">
+                    Learn more →
+                  </span>
+                </div>
+              </Link>
+            ))}
           </div>
 
-          {/* Bottom full-width hours banner */}
-          <Link
-            href={differences[3].href}
-            className="group relative mt-px bg-champagne/10 hover:bg-champagne/20 transition-all duration-500 p-10 lg:px-16 lg:py-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 overflow-hidden"
-          >
-            <div className="absolute right-0 top-0 bottom-0 font-display text-[8rem] font-bold text-champagne/5 leading-none select-none flex items-center group-hover:text-champagne/10 transition-colors duration-500 pr-8">
-              {differences[3].num}
-            </div>
-            <div>
-              <div className="w-8 h-px bg-champagne mb-3 group-hover:w-16 transition-all duration-500" />
-              <h3 className="font-display text-2xl lg:text-3xl font-semibold text-cream group-hover:text-champagne transition-colors duration-300">
-                {differences[3].title}
-              </h3>
-              <p className="font-body text-cream/50 text-sm mt-2 leading-relaxed max-w-lg">{differences[3].desc}</p>
-            </div>
-            <div className="flex-shrink-0 flex items-center gap-4 lg:pr-32">
-              {[["Mon – Fri", "8am – 7pm"], ["Saturday", "8am – 5pm"]].map(([day, hrs]) => (
-                <div key={day} className="text-center border border-champagne/20 px-6 py-4 group-hover:border-champagne/40 transition-colors">
-                  <p className="font-body text-cream/40 text-xs uppercase tracking-widest mb-1">{day}</p>
-                  <p className="font-display text-champagne text-lg font-semibold">{hrs}</p>
-                </div>
-              ))}
-            </div>
-          </Link>
-
-          <div className="mt-10 text-right">
-            <Link href="/about-us" className="btn-outline-cream inline-flex">
+          <div className="mt-12 flex flex-wrap gap-4 justify-end">
+            <Link href="/about-us" className="btn-outline-ink">
               About Our Practice →
             </Link>
+            <Link href="/book-online" className="btn-gold">
+              Book an Appointment
+            </Link>
           </div>
+
         </div>
       </section>
 
