@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -49,51 +50,15 @@ const offers = [
 ];
 
 const providers = [
-  {
-    name: "Medibank",
-    color: "#00A3E0",
-    abbr: "MB",
-  },
-  {
-    name: "Bupa",
-    color: "#005EB8",
-    abbr: "BP",
-  },
-  {
-    name: "CBHS",
-    color: "#E31837",
-    abbr: "CB",
-  },
-  {
-    name: "NIB",
-    color: "#00B140",
-    abbr: "NIB",
-  },
-  {
-    name: "Zip Pay",
-    color: "#AA8FFF",
-    abbr: "Zip",
-  },
-  {
-    name: "Denticare",
-    color: "#0078C8",
-    abbr: "DC",
-  },
-  {
-    name: "SmileCo",
-    color: "#FF6B35",
-    abbr: "SC",
-  },
-  {
-    name: "Medicare",
-    color: "#00A3E0",
-    abbr: "MC",
-  },
-  {
-    name: "DVA",
-    color: "#C9A84C",
-    abbr: "DVA",
-  },
+  { name: "Medibank",  img: "/providers/medibank.png" },
+  { name: "Bupa",      img: "/providers/Bupa.webp" },
+  { name: "CBHS",      img: "/providers/cbhs.webp" },
+  { name: "NIB",       img: "/providers/nib.png" },
+  { name: "Zip Pay",   img: "/providers/zippay.webp" },
+  { name: "Denticare", img: "/providers/denticare.png" },
+  { name: "SmileCo",   img: "/providers/smileco.png" },
+  { name: "Medicare",  img: "/providers/medicare.png" },
+  { name: "DVA",       img: "/providers/dva.png" },
 ];
 
 const jsonLd = {
@@ -214,12 +179,16 @@ export default function HomePage() {
                 className="provider-card flex flex-col items-center justify-center gap-3 py-5 px-3 border border-champagne/10 bg-forest/20"
                 style={{ animationDelay: `${i * 0.4}s` }}
               >
-                <span
-                  className="font-display font-bold text-lg leading-none tracking-tight"
-                  style={{ color: p.color, textShadow: `0 0 20px ${p.color}60` }}
-                >
-                  {p.abbr}
-                </span>
+                <div className="relative h-8 w-full flex items-center justify-center">
+                  <Image
+                    src={p.img}
+                    alt={p.name}
+                    width={80}
+                    height={32}
+                    className="max-h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    style={{ filter: "brightness(0) invert(1)" }}
+                  />
+                </div>
                 <p className="font-body text-[9px] uppercase tracking-widest text-cream/40 text-center leading-tight">{p.name}</p>
               </div>
             ))}
