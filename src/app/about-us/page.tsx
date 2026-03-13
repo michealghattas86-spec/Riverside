@@ -30,7 +30,7 @@ export default function AboutUsPage() {
             <blockquote className="border-gold-left pl-6 font-display text-xl italic text-ink/70 leading-relaxed mb-8">
               "We are a general dental practice which provides comprehensive dental care of the highest standard to people of all ages. We have sought to make our dental practice the type of clinic we would want to attend if we were the patient."
             </blockquote>
-            <Link href="/contact-us" className="btn-gold">Book an Appointment →</Link>
+            <Link href="/book-online" className="btn-gold">Book an Appointment →</Link>
           </div>
 
           <div className="lg:col-span-7 space-y-5">
