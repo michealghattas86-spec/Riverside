@@ -1,5 +1,7 @@
 import PageHero from "@/components/PageHero";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Book Online | Riverside No Gap Dental",
   description: "Book your dental appointment online with Riverside No Gap Dental. Search available times and confirm your visit instantly.",
