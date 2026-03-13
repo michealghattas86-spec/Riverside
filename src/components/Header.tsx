@@ -65,9 +65,9 @@ export default function Header() {
           <Image
             src="/logo.png"
             alt="Riverside No Gap Dental"
-            width={180}
-            height={60}
-            className="h-12 w-auto object-contain"
+            width={220}
+            height={70}
+            className="h-14 w-auto object-contain"
             priority
           />
         </Link>
