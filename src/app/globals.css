@@ -152,15 +152,18 @@ body {
     border-color: rgba(201,168,76,0.10);
     box-shadow: none;
     background-color: rgba(13,61,43,0.20);
+    transform: translateY(0px);
   }
   50% {
-    border-color: rgba(201,168,76,0.45);
-    box-shadow: 0 0 18px rgba(201,168,76,0.18), inset 0 0 12px rgba(201,168,76,0.05);
-    background-color: rgba(13,61,43,0.40);
+    border-color: rgba(201,168,76,0.40);
+    box-shadow: 0 0 20px rgba(201,168,76,0.15), inset 0 0 16px rgba(201,168,76,0.05);
+    background-color: rgba(13,61,43,0.45);
+    transform: translateY(-3px);
   }
 }
 .provider-card {
   animation: providerGlow 3.5s ease-in-out infinite;
+  transition: transform 0.3s;
 }
 
 /* ── Gold border left accent ───────────────────────── */
