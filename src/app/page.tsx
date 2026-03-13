@@ -185,8 +185,7 @@ export default function HomePage() {
                     alt={p.name}
                     width={80}
                     height={32}
-                    className="max-h-8 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity duration-300"
-                    style={{ filter: "brightness(0) invert(1)" }}
+                    className="max-h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
                   />
                 </div>
                 <p className="font-body text-[9px] uppercase tracking-widest text-cream/40 text-center leading-tight">{p.name}</p>
