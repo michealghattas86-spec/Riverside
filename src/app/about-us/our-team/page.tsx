@@ -1,11 +1,6 @@
-import type { Metadata } from "next";
+"use client";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
-
-export const metadata: Metadata = {
-  title: "Our Team | Riverside No Gap Dental",
-  description: "Meet the dedicated team at Riverside No Gap Dental — dentists, oral health therapists and support staff committed to exceptional patient care.",
-};
 
 const team = [
   {
@@ -112,7 +107,6 @@ export default function OurTeamPage() {
                         alt={member.name}
                         fill
                         className="object-cover object-top opacity-80"
-                        onError={() => {}}
                       />
                       {/* Fallback initials shown if image missing via CSS overlay approach */}
                       <div className="absolute inset-0 flex items-center justify-center">
