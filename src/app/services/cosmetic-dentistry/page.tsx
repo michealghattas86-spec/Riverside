@@ -72,7 +72,7 @@ export default function CosmeticDentistryPage() {
             <p>
               <strong className="text-ink font-semibold">Dr. Shilpa Dhawan</strong> also has a special interest in orthodontics and clear aligners, and our aesthetic nurse <strong className="text-ink font-semibold">Tassiana Miranda</strong> offers facial aesthetic treatments to complement your new smile.
             </p>
-            <Link href="/contact-us" className="btn-gold inline-flex mt-2">Book a Smile Consultation →</Link>
+            <Link href="/book-online" className="btn-gold inline-flex mt-2">Book a Smile Consultation →</Link>
           </div>
 
           <div className="lg:col-span-5 space-y-4">
@@ -152,7 +152,7 @@ export default function CosmeticDentistryPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="tel:0363110520" className="btn-gold">📞 (03) 6311 0520</a>
-            <Link href="/contact-us" className="btn-outline-cream">Book a Consultation</Link>
+            <Link href="/book-online" className="btn-outline-cream">Book a Consultation</Link>
           </div>
         </div>
       </section>
