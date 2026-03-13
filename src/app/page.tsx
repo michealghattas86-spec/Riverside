@@ -16,10 +16,30 @@ const stats = [
 ];
 
 const differences = [
-  { num: "01", title: "No Gap Payment", desc: "Preferred providers for Medibank, Bupa, CBHS & NIB. All other health funds equally welcome — no unexpected out-of-pocket costs.", href: "/special-offers/payment-options" },
-  { num: "02", title: "Individual Treatment Plans", desc: "Every patient receives a personalised, itemised plan with full cost transparency before any treatment begins.", href: "/special-offers/treatment-plans" },
-  { num: "03", title: "Flexible Payments", desc: "Denticare, Zip Pay, SmileCo, DVA bulk billing, and Medicare CDBS for eligible children — we make it work for you.", href: "/special-offers/payment-options" },
-  { num: "04", title: "Extended Hours", desc: "Open Monday to Friday until 7pm and Saturdays until 5pm, because your schedule shouldn't determine your health.", href: "/contact-us" },
+  {
+    num: "01",
+    title: "No Gap Payment",
+    desc: "Preferred providers for Medibank, Bupa, CBHS & NIB. No unexpected out-of-pocket costs.",
+    href: "/special-offers/payment-options",
+  },
+  {
+    num: "02",
+    title: "Full Cost Transparency",
+    desc: "Every patient receives a personalised, itemised plan before any treatment begins.",
+    href: "/special-offers/treatment-plans",
+  },
+  {
+    num: "03",
+    title: "Flexible Payments",
+    desc: "Denticare, Zip Pay, SmileCo, DVA bulk billing, and Medicare CDBS for eligible children.",
+    href: "/special-offers/payment-options",
+  },
+  {
+    num: "04",
+    title: "Extended Hours",
+    desc: "Open Monday to Friday until 7pm and Saturdays until 5pm. We work around your life.",
+    href: "/book-online",
+  },
 ];
 
 const offers = [
@@ -29,15 +49,6 @@ const offers = [
 ];
 
 const insurers = ["Medibank", "Bupa", "CBHS", "NIB", "Zip Pay", "Denticare", "SmileCo", "Medicare", "DVA"];
-
-const team = [
-  { name: "Dr. Charl Jacob", role: "BDS (JCU) · Dentist", specialty: "Implant Dentistry" },
-  { name: "Dr. Rony Gandhi", role: "Dentist", specialty: "Root Canal & Invisalign" },
-  { name: "Dr. Jatin Chavda", role: "Dentist · MPH (Deakin)", specialty: "Surgical & Cosmetic" },
-  { name: "Dr. James Liu", role: "BDS (JCU) · Dentist", specialty: "Smile Reconstruction" },
-  { name: "Shilpa Dhawan", role: "Dentist", specialty: "Clear Aligners" },
-  { name: "Lauren Oldham", role: "Oral Health Therapist", specialty: "Prevention & Hygiene" },
-];
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -71,7 +82,6 @@ const jsonLd = {
   ],
   hasMap: "https://maps.google.com/?q=1+Windsor+Drive+Riverside+Tasmania+7250",
   priceRange: "$$",
-  servesCuisine: undefined,
   medicalSpecialty: "Dentist",
 };
 
@@ -79,22 +89,19 @@ export default function HomePage() {
   return (
     <>
       <Script id="schema-local-business" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       {/* ── HERO ───────────────────────────────────── */}
       <section className="relative min-h-screen bg-ink flex items-center overflow-hidden noise pt-28">
-        {/* Background geometry */}
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-[55vw] h-full bg-forest clip-diagonal opacity-70" />
           <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-emerald/20 blur-3xl" />
           <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-champagne/5 blur-2xl" />
         </div>
-
-        {/* Decorative lines */}
         <div className="absolute top-1/4 left-1/2 w-px h-40 bg-gradient-to-b from-transparent via-champagne/30 to-transparent" />
         <div className="absolute top-8 right-64 w-32 h-px bg-gradient-to-r from-transparent via-champagne/40 to-transparent" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
-            {/* Left column */}
             <div className="animate-fade-up">
               <p className="font-body text-champagne text-xs tracking-[0.4em] uppercase mb-6">
                 Riverside · Tasmania
@@ -111,13 +118,12 @@ export default function HomePage() {
                 <a href="tel:0363110520" className="btn-gold">
                   Call (03) 6311 0520
                 </a>
-                <Link href="/contact-us" className="btn-outline-cream">
+                <Link href="/book-online" className="btn-outline-cream">
                   Book Appointment
                 </Link>
               </div>
             </div>
 
-            {/* Right column — stat card */}
             <div className="hidden lg:block animate-fade-up-delay">
               <div className="relative">
                 <div className="border border-champagne/20 bg-forest/60 backdrop-blur p-10">
@@ -135,14 +141,12 @@ export default function HomePage() {
                   </div>
                   <div className="h-px bg-gold-gradient mt-8" />
                 </div>
-                {/* Corner accents */}
                 <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-champagne" />
                 <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-champagne" />
               </div>
             </div>
           </div>
 
-          {/* Scroll cue */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/30">
             <p className="font-body text-xs tracking-widest uppercase">Scroll</p>
             <div className="w-px h-10 bg-gradient-to-b from-cream/30 to-transparent" />
@@ -152,7 +156,7 @@ export default function HomePage() {
 
       {/* ── PREFERRED PROVIDERS STRIP ──────────────── */}
       <div className="bg-warm py-5 border-y border-champagne/20 overflow-hidden">
-        <div className="flex items-center gap-12 animate-none">
+        <div className="flex items-center gap-12">
           <p className="font-body text-xs uppercase tracking-[0.3em] text-ink/40 whitespace-nowrap pl-10 flex-shrink-0">
             Preferred Providers
           </p>
@@ -166,38 +170,101 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── OUR DIFFERENCE ─────────────────────────── */}
-      <section className="py-28 bg-cream">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            {/* Heading */}
-            <div className="lg:col-span-4 lg:sticky lg:top-32">
-              <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-3">Why Choose Us</p>
-              <h2 className="font-display text-5xl lg:text-6xl font-light italic text-ink leading-none mb-4">
-                Our<br /><em className="not-italic font-semibold">Difference</em>
-              </h2>
-              <span className="gold-rule block mb-6" />
-              <p className="font-body text-ink/50 text-sm leading-relaxed">
-                We built Riverside No Gap Dental to be the kind of clinic we would want to visit ourselves — where care, transparency and convenience come first.
-              </p>
-              <Link href="/about-us" className="btn-gold mt-8 inline-flex">
-                About Us →
-              </Link>
-            </div>
+      {/* ── WHY CHOOSE US — REDESIGNED ─────────────── */}
+      <section className="py-28 bg-ink relative overflow-hidden noise">
+        <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 60px, rgb(200,170,100) 60px, rgb(200,170,100) 61px), repeating-linear-gradient(90deg, transparent, transparent 60px, rgb(200,170,100) 60px, rgb(200,170,100) 61px)"}} />
+        <div className="absolute top-0 right-0 w-[40vw] h-[40vw] rounded-full bg-forest/40 blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-champagne/5 blur-3xl" />
 
-            {/* Cards */}
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {differences.map((d) => (
-                <Link key={d.num} href={d.href} className="group card-lift block bg-white border border-ink/5 p-8">
-                  <p className="font-display text-5xl text-champagne/30 font-semibold mb-4">{d.num}</p>
-                  <div className="w-8 h-px bg-champagne mb-4 group-hover:w-16 transition-all duration-300" />
-                  <h3 className="font-display text-xl font-semibold text-ink mb-3 group-hover:text-emerald transition-colors">
-                    {d.title}
-                  </h3>
-                  <p className="font-body text-sm text-ink/50 leading-relaxed">{d.desc}</p>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="mb-20 max-w-xl">
+            <p className="font-body text-champagne text-xs tracking-[0.4em] uppercase mb-4">Why Choose Us</p>
+            <h2 className="font-display text-5xl lg:text-6xl font-light italic text-cream leading-none">
+              Dentistry done<br />
+              <em className="not-italic font-semibold shimmer-text">differently.</em>
+            </h2>
+            <div className="w-16 h-px bg-champagne mt-6" />
+          </div>
+
+          {/* Top two panels */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-px bg-champagne/10">
+            {/* Large featured panel */}
+            <Link
+              href={differences[0].href}
+              className="group relative bg-forest/30 hover:bg-forest/60 transition-all duration-500 p-12 lg:p-16 flex flex-col justify-between min-h-[340px] overflow-hidden"
+            >
+              <div className="absolute bottom-0 right-0 font-display text-[10rem] font-bold text-champagne/5 leading-none select-none group-hover:text-champagne/10 transition-colors duration-500 pr-4 pb-2">
+                {differences[0].num}
+              </div>
+              <div>
+                <div className="w-10 h-px bg-champagne mb-8 group-hover:w-20 transition-all duration-500" />
+                <h3 className="font-display text-3xl lg:text-4xl font-semibold text-cream mb-4 group-hover:text-champagne transition-colors duration-300">
+                  {differences[0].title}
+                </h3>
+                <p className="font-body text-cream/50 text-base leading-relaxed max-w-sm">
+                  {differences[0].desc}
+                </p>
+              </div>
+              <p className="font-body text-xs uppercase tracking-[0.3em] text-champagne/60 group-hover:text-champagne transition-colors mt-8">
+                Learn More →
+              </p>
+            </Link>
+
+            {/* Two stacked smaller panels */}
+            <div className="flex flex-col gap-px">
+              {[differences[1], differences[2]].map((d) => (
+                <Link
+                  key={d.num}
+                  href={d.href}
+                  className="group relative bg-forest/20 hover:bg-forest/50 transition-all duration-500 p-10 lg:p-12 flex flex-col justify-between overflow-hidden flex-1"
+                >
+                  <div className="absolute bottom-0 right-0 font-display text-[7rem] font-bold text-champagne/5 leading-none select-none group-hover:text-champagne/10 transition-colors duration-500 pr-3 pb-1">
+                    {d.num}
+                  </div>
+                  <div>
+                    <div className="w-6 h-px bg-champagne mb-4 group-hover:w-14 transition-all duration-500" />
+                    <h3 className="font-display text-2xl font-semibold text-cream mb-2 group-hover:text-champagne transition-colors duration-300">
+                      {d.title}
+                    </h3>
+                    <p className="font-body text-cream/50 text-sm leading-relaxed">{d.desc}</p>
+                  </div>
+                  <p className="font-body text-xs uppercase tracking-[0.3em] text-champagne/60 group-hover:text-champagne transition-colors mt-6">
+                    Learn More →
+                  </p>
                 </Link>
               ))}
             </div>
+          </div>
+
+          {/* Bottom full-width hours banner */}
+          <Link
+            href={differences[3].href}
+            className="group relative mt-px bg-champagne/10 hover:bg-champagne/20 transition-all duration-500 p-10 lg:px-16 lg:py-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 overflow-hidden"
+          >
+            <div className="absolute right-0 top-0 bottom-0 font-display text-[8rem] font-bold text-champagne/5 leading-none select-none flex items-center group-hover:text-champagne/10 transition-colors duration-500 pr-8">
+              {differences[3].num}
+            </div>
+            <div>
+              <div className="w-8 h-px bg-champagne mb-3 group-hover:w-16 transition-all duration-500" />
+              <h3 className="font-display text-2xl lg:text-3xl font-semibold text-cream group-hover:text-champagne transition-colors duration-300">
+                {differences[3].title}
+              </h3>
+              <p className="font-body text-cream/50 text-sm mt-2 leading-relaxed max-w-lg">{differences[3].desc}</p>
+            </div>
+            <div className="flex-shrink-0 flex items-center gap-4 lg:pr-32">
+              {[["Mon – Fri", "8am – 7pm"], ["Saturday", "8am – 5pm"]].map(([day, hrs]) => (
+                <div key={day} className="text-center border border-champagne/20 px-6 py-4 group-hover:border-champagne/40 transition-colors">
+                  <p className="font-body text-cream/40 text-xs uppercase tracking-widest mb-1">{day}</p>
+                  <p className="font-display text-champagne text-lg font-semibold">{hrs}</p>
+                </div>
+              ))}
+            </div>
+          </Link>
+
+          <div className="mt-10 text-right">
+            <Link href="/about-us" className="btn-outline-cream inline-flex">
+              About Our Practice →
+            </Link>
           </div>
         </div>
       </section>
@@ -250,41 +317,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TEAM PREVIEW ───────────────────────────── */}
-      <section className="py-28 bg-warm">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="flex flex-col lg:flex-row items-start justify-between gap-8 mb-16">
-            <div>
-              <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-3">The Professionals</p>
-              <h2 className="font-display text-5xl lg:text-6xl font-light italic text-ink leading-none">
-                Meet Our <em className="not-italic font-semibold">Team</em>
-              </h2>
-              <span className="gold-rule mt-4 block" />
-            </div>
-            <Link href="/about-us/our-team" className="btn-gold flex-shrink-0 mt-4 lg:mt-0">
-              Full Team →
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {team.map((t, i) => (
-              <div key={i} className="group card-lift bg-white border border-ink/5 p-8 flex items-start gap-5">
-                <div className="w-12 h-12 bg-forest flex items-center justify-center flex-shrink-0 font-display text-champagne text-lg font-semibold">
-                  {t.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
-                </div>
-                <div>
-                  <p className="font-display font-semibold text-ink text-lg leading-tight group-hover:text-emerald transition-colors">{t.name}</p>
-                  <p className="font-body text-xs text-ink/40 mt-0.5 mb-2">{t.role}</p>
-                  <span className="inline-block font-body text-xs border border-champagne/50 text-champagne px-2 py-0.5">
-                    {t.specialty}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── MISSION QUOTE ──────────────────────────── */}
       <section className="py-28 bg-ink relative noise overflow-hidden">
         <div className="absolute inset-0 flex items-center justify-center opacity-5">
@@ -308,56 +340,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── LOCATION + HOURS ───────────────────────── */}
-      <section className="py-28 bg-cream">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-3">Come See Us</p>
-              <h2 className="font-display text-5xl font-light italic text-ink leading-none mb-4">
-                Located in the <em className="not-italic font-semibold">Heart</em> of Riverside
-              </h2>
-              <span className="gold-rule mb-8 block" />
-              <p className="font-body text-ink/50 text-sm leading-relaxed mb-8">
-                We are part of the Health and Wellbeing Centre — a modern complex co-located with a GP clinic, pharmacy, pathology, childcare, and more. Fully accessible with 112 parking spaces.
-              </p>
-              <address className="not-italic font-body text-sm space-y-2 text-ink/60 mb-8">
-                <p className="font-semibold text-ink">The Health and Wellbeing Centre</p>
-                <p>1 Windsor Drive, Riverside, Tasmania 7250</p>
-                <a href="tel:0363110520" className="block text-emerald hover:text-champagne transition-colors font-semibold text-lg mt-3">
-                  (03) 6311 0520
-                </a>
-              </address>
-              <a
-                href="https://maps.google.com/?q=1+Windsor+Drive+Riverside+Tasmania+7250"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold"
-              >
-                Get Directions →
-              </a>
-            </div>
-
-            <div className="space-y-3">
-              {[
-                ["Monday", "8:00am – 7:00pm", true],
-                ["Tuesday", "8:00am – 7:00pm", true],
-                ["Wednesday", "8:00am – 7:00pm", true],
-                ["Thursday", "8:00am – 7:00pm", true],
-                ["Friday", "8:00am – 7:00pm", true],
-                ["Saturday", "8:00am – 5:00pm", true],
-                ["Sunday", "Closed", false],
-              ].map(([day, hours, open]) => (
-                <div key={day as string} className={`flex justify-between items-center px-6 py-4 border ${open ? "border-ink/5 bg-white" : "border-ink/5 bg-ink/2 opacity-40"}`}>
-                  <p className="font-body text-sm font-medium text-ink">{day as string}</p>
-                  <p className={`font-body text-sm ${open ? "text-emerald font-semibold" : "text-ink/30"}`}>{hours as string}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── CTA BANNER ─────────────────────────────── */}
       <section className="bg-emerald-gradient py-20 relative noise overflow-hidden">
         <div className="absolute top-0 left-0 right-0 h-px bg-gold-gradient" />
@@ -371,8 +353,8 @@ export default function HomePage() {
             <a href="tel:0363110520" className="btn-gold">
               📞 Call (03) 6311 0520
             </a>
-            <Link href="/contact-us" className="btn-outline-cream">
-              Send a Message
+            <Link href="/book-online" className="btn-outline-cream">
+              Book Online
             </Link>
           </div>
         </div>
