@@ -1,50 +1,187 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
 
-export const metadata: Metadata = { title: "Our Team", description: "Meet the dedicated team at Riverside No Gap Dental — dentists, oral health therapists and support staff." };
+export const metadata: Metadata = {
+  title: "Our Team | Riverside No Gap Dental",
+  description: "Meet the dedicated team at Riverside No Gap Dental — dentists, oral health therapists and support staff committed to exceptional patient care.",
+};
 
 const team = [
-  { name: "Dr. Charl Jacob", role: "Dentist", qual: "BDS (JCU)", specialty: "Implant Dentistry", bio: ["Dr. Jacob graduated from James Cook University with a Bachelor of Dental Surgery. He also holds a Veterinary Medicine degree from Cairo University (2003).", "He believes in the importance of patient education to ensure optimal oral health. His particular interest is implant dentistry across all aspects of general practice."] },
-  { name: "Dr. Rony Gandhi", role: "Dentist", qual: "BDS (Gujarat)", specialty: "Root Canal & Invisalign", bio: ["Dr. Gandhi graduated from Gujarat University in 2006 and worked as a primary dentist in an Indian hospital for 14 years, then as principal dentist in his own clinic for 12 years.", "He has completed over 5,000 root canal treatments and recently became certified to offer Invisalign. Outside the clinic he enjoys cricket with Riverside Cricket Club and travelling with family."] },
-  { name: "Dr. Jatin Chavda", role: "Dentist", qual: "BDS · MPH (Deakin)", specialty: "Surgical & Cosmetic", bio: ["Dr. Chavda graduated from Rajiv Gandhi University in 2014 and moved to Australia in 2015. He holds a postgraduate Master of Public Health and Health Promotion from Deakin University.", "He sees dentistry as the perfect mix of medicine, science and art. His expertise lies in surgical and cosmetic dentistry, and he loves to travel and play cricket on weekends."] },
-  { name: "Dr. James Liu", role: "Dentist", qual: "BDS (JCU)", specialty: "Smile Reconstruction", bio: ["Dr. Liu is a James Cook University graduate who has practised in Hervey Bay and Brisbane before being drawn to Tasmania's beautiful natural environment.", "He is gentle, caring and thorough — he enjoys rebuilding smiles and giving patients back their confidence."] },
-  { name: "Shilpa Dhawan", role: "Dentist", qual: "", specialty: "Clear Aligners & Orthodontics", bio: ["Dr. Shilpa's top priority is caring for anxious patients. She uses a patient-focused approach to create a stress-free environment, understanding that dental anxiety is a very real barrier to care.", "She advocates strongly for preventive care tailored to each individual. After practising in Melbourne and Tasmania, she is excited to serve Riverside and Launceston communities. In her spare time she practises yoga and plans her next travel adventure."] },
-  { name: "Lauren Oldham", role: "Oral Health Therapist", qual: "BOHSc (La Trobe)", specialty: "Prevention & Gum Health", bio: ["Lauren graduated in 2013 after completing her Bachelor of Oral Health Science at La Trobe University in Bendigo, Victoria. She is qualified in both dental therapy and dental hygiene.", "Her main focus is the prevention and treatment of dental decay and gum disease. A Tasmanian local, she returned after her degree and enjoys travelling and spending time at the beach."] },
-  { name: "Tassiana Miranda", role: "Aesthetic Nurse", qual: "RN", specialty: "Holistic Skin & Aesthetics", bio: ["Tassiana is a compassionate Registered Nurse with a background in primary health care and aged care. She is a member of the Cosmetic Nurse Association, Australian Dermatology Nurses Association, and Aesthetic & Beauty Industry Council.", "Her passion is holistic skin health — empowering clients to embrace their natural beauty. She is committed to evidence-based practice and delivers personalised, expert care tailored to each client's unique needs."] },
+  {
+    name: "Dr. Charl Jacob",
+    role: "Dentist",
+    qual: "BDS (JCU)",
+    specialty: "Implant Dentistry",
+    photo: "/team/charl-jacob.jpg",
+    bio: ["Dr. Jacob graduated from James Cook University with a Bachelor of Dental Surgery and also holds a Veterinary Medicine degree from Cairo University (2003).", "He believes in patient education for optimal oral health, with a particular interest in implant dentistry across all aspects of general practice."],
+  },
+  {
+    name: "Dr. Rony Gandhi",
+    role: "Dentist",
+    qual: "BDS (Gujarat)",
+    specialty: "Root Canal & Invisalign",
+    photo: "/team/rony-gandhi.jpg",
+    bio: ["Dr. Gandhi graduated from Gujarat University in 2006 and worked as a primary dentist in India for over 26 years before joining our team.", "He has completed over 5,000 root canal treatments and is certified in Invisalign. Outside the clinic he enjoys cricket and travelling with family."],
+  },
+  {
+    name: "Dr. Jatin Chavda",
+    role: "Dentist",
+    qual: "BDS · MPH (Deakin)",
+    specialty: "Surgical & Cosmetic",
+    photo: "/team/jatin-chavda.jpg",
+    bio: ["Dr. Chavda graduated from Rajiv Gandhi University in 2014 and holds a postgraduate Master of Public Health from Deakin University.", "He sees dentistry as the perfect mix of medicine, science and art — his expertise lies in surgical and cosmetic dentistry."],
+  },
+  {
+    name: "Dr. James Liu",
+    role: "Dentist",
+    qual: "BDS (JCU)",
+    specialty: "Smile Reconstruction",
+    photo: "/team/james-liu.jpg",
+    bio: ["Dr. Liu is a James Cook University graduate who has practised in Hervey Bay and Brisbane before being drawn to Tasmania's beautiful natural environment.", "Gentle, caring and thorough — he loves rebuilding smiles and giving patients back their confidence."],
+  },
+  {
+    name: "Dr. Shilpa Dhawan",
+    role: "Dentist",
+    qual: "",
+    specialty: "Clear Aligners & Orthodontics",
+    photo: "/team/shilpa-dhawan.jpg",
+    bio: ["Dr. Shilpa's top priority is caring for anxious patients. She uses a patient-focused approach to create a stress-free environment.", "She advocates strongly for preventive care tailored to each individual and serves the Riverside and Launceston communities with great warmth."],
+  },
+  {
+    name: "Lauren Oldham",
+    role: "Oral Health Therapist",
+    qual: "BOHSc (La Trobe)",
+    specialty: "Prevention & Gum Health",
+    photo: "/team/lauren-oldham.jpg",
+    bio: ["Lauren graduated in 2013 with a Bachelor of Oral Health Science from La Trobe University and is qualified in both dental therapy and dental hygiene.", "Her focus is the prevention and treatment of dental decay and gum disease. A Tasmanian local, she loves travelling and the beach."],
+  },
+  {
+    name: "Tassiana Miranda",
+    role: "Aesthetic Nurse",
+    qual: "RN",
+    specialty: "Holistic Skin & Aesthetics",
+    photo: "/team/tassiana-miranda.jpg",
+    bio: ["Tassiana is a compassionate Registered Nurse and member of the Cosmetic Nurse Association, Australian Dermatology Nurses Association, and ABIC.", "Her passion is holistic skin health — empowering clients to embrace their natural beauty with evidence-based, personalised care."],
+  },
 ];
+
+function getInitials(name: string) {
+  return name.replace("Dr. ", "").replace("Dr ", "").split(" ").map((n) => n[0]).slice(0, 2).join("");
+}
 
 export default function OurTeamPage() {
   return (
     <>
-      <PageHero eyebrow="The People Behind Your Smile" title="Our Team" subtitle="20+ dedicated professionals who all share the same passion for exceptional, patient-centred dental care." />
+      <PageHero
+        eyebrow="The People Behind Your Smile"
+        title="Our Team"
+        subtitle="20+ dedicated professionals who share one passion — exceptional, patient-centred care."
+      />
 
-      <section className="py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {team.map((m) => (
-              <div key={m.name} className="group card-lift bg-white border border-ink/5">
-                <div className="p-8 flex items-start gap-6">
-                  <div className="w-16 h-16 bg-forest flex items-center justify-center flex-shrink-0 font-display text-champagne text-xl font-semibold">
-                    {m.name.replace("Dr. ", "").replace("Dr ", "").split(" ").map((n: string) => n[0]).slice(0, 2).join("")}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h2 className="font-display text-ink text-2xl font-semibold group-hover:text-emerald transition-colors">{m.name}</h2>
-                    <div className="flex flex-wrap gap-2 mt-1.5">
-                      <span className="font-body text-xs text-ink/40 uppercase tracking-widest">{m.role}{m.qual ? ` · ${m.qual}` : ""}</span>
+      <section className="py-28 bg-ink relative overflow-hidden noise">
+        {/* Ambient background blobs */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-forest/30 blur-[120px] -translate-x-1/2 -translate-y-1/4 pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-champagne/5 blur-[100px] pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+
+          {/* Section label */}
+          <div className="flex items-center gap-4 mb-16">
+            <span className="w-8 h-px bg-champagne/40" />
+            <p className="font-body text-champagne text-xs tracking-[0.4em] uppercase">Hover to learn more</p>
+            <span className="w-8 h-px bg-champagne/40" />
+          </div>
+
+          {/* Card grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {team.map((member) => (
+              <div
+                key={member.name}
+                className="team-card-wrap"
+                style={{ height: "420px" }}
+              >
+                <div className="team-card-inner">
+
+                  {/* ── FRONT ── */}
+                  <div className="team-card-front bg-forest/30 border border-champagne/10 overflow-hidden flex flex-col">
+                    {/* Photo area */}
+                    <div className="relative flex-1 bg-forest/50 overflow-hidden">
+                      <Image
+                        src={member.photo}
+                        alt={member.name}
+                        fill
+                        className="object-cover object-top opacity-80"
+                        onError={() => {}}
+                      />
+                      {/* Fallback initials shown if image missing via CSS overlay approach */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <span className="font-display text-5xl font-bold text-champagne/20 select-none">
+                          {getInitials(member.name)}
+                        </span>
+                      </div>
+                      {/* Bottom gradient */}
+                      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ink/80 to-transparent" />
+                      {/* Specialty badge */}
+                      <div className="absolute bottom-4 left-4 right-4">
+                        <span className="inline-block font-body text-[10px] uppercase tracking-widest border border-champagne/50 text-champagne px-3 py-1 bg-ink/40 backdrop-blur-sm">
+                          {member.specialty}
+                        </span>
+                      </div>
                     </div>
-                    <span className="inline-block mt-2 font-body text-xs border border-champagne/50 text-champagne px-2.5 py-0.5">
-                      {m.specialty}
-                    </span>
+
+                    {/* Name area */}
+                    <div className="p-5 border-t border-champagne/10">
+                      <h3 className="font-display text-cream text-xl font-semibold leading-tight">{member.name}</h3>
+                      <p className="font-body text-champagne/70 text-xs mt-1 tracking-wide">
+                        {member.role}{member.qual ? ` · ${member.qual}` : ""}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="px-8 pb-8 border-t border-ink/5 pt-6 space-y-3">
-                  {m.bio.map((para, i) => (
-                    <p key={i} className="font-body text-sm text-ink/50 leading-relaxed">{para}</p>
-                  ))}
+
+                  {/* ── BACK ── */}
+                  <div className="team-card-back bg-forest border border-champagne/30 flex flex-col justify-between p-7 overflow-hidden">
+                    {/* Decorative watermark */}
+                    <div className="absolute bottom-0 right-0 font-display text-[8rem] font-bold text-champagne/5 leading-none select-none pr-2 pb-0">
+                      {getInitials(member.name)}
+                    </div>
+
+                    <div>
+                      {/* Gold top rule */}
+                      <div className="h-px bg-gold-gradient mb-6" />
+                      <h3 className="font-display text-cream text-2xl font-semibold mb-1">{member.name}</h3>
+                      <p className="font-body text-champagne text-xs uppercase tracking-widest mb-5">
+                        {member.specialty}
+                      </p>
+                      <div className="space-y-3">
+                        {member.bio.map((para, i) => (
+                          <p key={i} className="font-body text-cream/60 text-sm leading-relaxed">{para}</p>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-6 pt-5 border-t border-champagne/20">
+                      <p className="font-body text-cream/30 text-[10px] uppercase tracking-[0.3em]">
+                        {member.role}{member.qual ? ` · ${member.qual}` : ""}
+                      </p>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Bottom CTA */}
+          <div className="mt-20 text-center">
+            <p className="font-display text-cream/40 text-lg italic mb-6">
+              "The clinic we&apos;d choose if we were the patient."
+            </p>
+            <a href="tel:0363110520" className="btn-gold">
+              Meet Us In Person — Call (03) 6311 0520
+            </a>
+          </div>
+
         </div>
       </section>
     </>
