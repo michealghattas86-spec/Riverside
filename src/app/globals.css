@@ -164,6 +164,7 @@ body {
 .provider-card {
   animation: providerGlow 3.5s ease-in-out infinite;
   transition: transform 0.3s;
+  border-radius: 1rem;
 }
 
 /* ── Gold border left accent ───────────────────────── */
