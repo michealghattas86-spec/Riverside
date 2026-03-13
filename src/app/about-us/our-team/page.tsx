@@ -16,7 +16,7 @@ const team = [
     role: "Dentist",
     qual: "BDS (Gujarat)",
     specialty: "Root Canal & Invisalign",
-    photo: "/DrGhandi.jpg",
+    photo: "/rony.jpg",
     bio: ["Dr. Gandhi graduated from Gujarat University in 2006 and worked as a primary dentist in India for over 26 years before joining our team.", "He has completed over 5,000 root canal treatments and is certified in Invisalign. Outside the clinic he enjoys cricket and travelling with family."],
   },
   {
