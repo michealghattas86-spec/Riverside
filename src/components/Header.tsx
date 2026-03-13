@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const nav = [
   { label: "Home", href: "/" },
@@ -45,6 +45,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdown, setDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -78,8 +79,13 @@ export default function Header() {
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => setDropdown(item.label)}
-                onMouseLeave={() => setDropdown(null)}
+                onMouseEnter={() => {
+                  if (closeTimer.current) clearTimeout(closeTimer.current);
+                  setDropdown(item.label);
+                }}
+                onMouseLeave={() => {
+                  closeTimer.current = setTimeout(() => setDropdown(null), 150);
+                }}
               >
                 <Link
                   href={item.href}
@@ -91,18 +97,20 @@ export default function Header() {
                   </svg>
                 </Link>
                 {dropdown === item.label && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-forest border border-champagne/20 shadow-2xl">
-                    <div className="h-px bg-gold-gradient" />
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="block px-5 py-4 border-b border-champagne/10 hover:bg-emerald/40 transition-colors group"
-                      >
-                        <p className="font-body text-sm text-cream group-hover:text-champagne transition-colors">{child.label}</p>
-                        <p className="font-body text-xs text-cream/50 mt-0.5">{child.sub}</p>
-                      </Link>
-                    ))}
+                  <div className="absolute top-full left-0 w-64 pt-3">
+                    <div className="bg-forest border border-champagne/20 shadow-2xl">
+                      <div className="h-px bg-gold-gradient" />
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className="block px-5 py-4 border-b border-champagne/10 hover:bg-emerald/40 transition-colors group"
+                        >
+                          <p className="font-body text-sm text-cream group-hover:text-champagne transition-colors">{child.label}</p>
+                          <p className="font-body text-xs text-cream/50 mt-0.5">{child.sub}</p>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -123,7 +131,7 @@ export default function Header() {
           <a href="tel:0363110520" className="font-body text-sm text-cream/70 hover:text-champagne transition-colors tracking-wide">
             (03) 6311 0520
           </a>
-          <Link href="/contact-us" className="btn-gold text-xs py-2.5 px-6">
+          <Link href="/book-online" className="btn-gold text-xs py-2.5 px-6">
             Book Now
           </Link>
         </div>
