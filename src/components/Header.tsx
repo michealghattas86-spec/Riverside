@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const nav = [
@@ -59,22 +60,15 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-4 group">
-          <div className="relative w-11 h-11 flex-shrink-0">
-            <div className="absolute inset-0 border border-champagne/60 rotate-45 group-hover:rotate-[50deg] transition-transform duration-500" />
-            <div className="absolute inset-1 border border-champagne/30 rotate-45" />
-            <span className="absolute inset-0 flex items-center justify-center font-display font-bold text-champagne text-sm">
-              RD
-            </span>
-          </div>
-          <div>
-            <p className="font-display text-cream text-xl font-semibold leading-none tracking-wide">
-              Riverside
-            </p>
-            <p className="font-body text-champagne text-[10px] tracking-[0.25em] uppercase mt-0.5">
-              No Gap Dental
-            </p>
-          </div>
+        <Link href="/" className="flex items-center group">
+          <Image
+            src="/logo.png"
+            alt="Riverside No Gap Dental"
+            width={180}
+            height={60}
+            className="h-12 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop nav */}
