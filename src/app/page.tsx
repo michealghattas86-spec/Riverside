@@ -49,15 +49,51 @@ const offers = [
 ];
 
 const providers = [
-  { name: "Medibank",  logo: "https://logo.clearbit.com/medibank.com.au" },
-  { name: "Bupa",      logo: "https://logo.clearbit.com/bupa.com.au" },
-  { name: "CBHS",      logo: "https://logo.clearbit.com/cbhs.com.au" },
-  { name: "NIB",       logo: "https://logo.clearbit.com/nib.com.au" },
-  { name: "Zip Pay",   logo: "https://logo.clearbit.com/zip.co" },
-  { name: "Denticare", logo: "https://logo.clearbit.com/denticare.com.au" },
-  { name: "SmileCo",   logo: "https://logo.clearbit.com/smileco.com.au" },
-  { name: "Medicare",  logo: "https://logo.clearbit.com/servicesaustralia.gov.au" },
-  { name: "DVA",       logo: "https://logo.clearbit.com/dva.gov.au" },
+  {
+    name: "Medibank",
+    color: "#00A3E0",
+    abbr: "MB",
+  },
+  {
+    name: "Bupa",
+    color: "#005EB8",
+    abbr: "BP",
+  },
+  {
+    name: "CBHS",
+    color: "#E31837",
+    abbr: "CB",
+  },
+  {
+    name: "NIB",
+    color: "#00B140",
+    abbr: "NIB",
+  },
+  {
+    name: "Zip Pay",
+    color: "#AA8FFF",
+    abbr: "Zip",
+  },
+  {
+    name: "Denticare",
+    color: "#0078C8",
+    abbr: "DC",
+  },
+  {
+    name: "SmileCo",
+    color: "#FF6B35",
+    abbr: "SC",
+  },
+  {
+    name: "Medicare",
+    color: "#00A3E0",
+    abbr: "MC",
+  },
+  {
+    name: "DVA",
+    color: "#C9A84C",
+    abbr: "DVA",
+  },
 ];
 
 const jsonLd = {
@@ -175,19 +211,16 @@ export default function HomePage() {
             {providers.map((p, i) => (
               <div
                 key={p.name}
-                className="provider-card flex flex-col items-center justify-center gap-2 p-4 border border-champagne/10 bg-forest/20 rounded-sm"
+                className="provider-card flex flex-col items-center justify-center gap-3 py-5 px-3 border border-champagne/10 bg-forest/20"
                 style={{ animationDelay: `${i * 0.4}s` }}
               >
-                <div className="h-8 w-full flex items-center justify-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={p.logo}
-                    alt={p.name}
-                    className="max-h-8 max-w-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
-                    style={{ filter: "brightness(0) invert(1)" }}
-                  />
-                </div>
-                <p className="font-body text-[9px] uppercase tracking-widest text-cream/30 text-center leading-tight">{p.name}</p>
+                <span
+                  className="font-display font-bold text-lg leading-none tracking-tight"
+                  style={{ color: p.color, textShadow: `0 0 20px ${p.color}60` }}
+                >
+                  {p.abbr}
+                </span>
+                <p className="font-body text-[9px] uppercase tracking-widest text-cream/40 text-center leading-tight">{p.name}</p>
               </div>
             ))}
           </div>
