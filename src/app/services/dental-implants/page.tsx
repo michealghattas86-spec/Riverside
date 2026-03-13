@@ -56,7 +56,7 @@ export default function DentalImplantsPage() {
             <div className="border-l-4 border-champagne pl-6 italic text-ink/50 font-display text-lg">
               "Dr. Jacob believes in the importance of patient education to ensure oral and general healthcare is optimally maintained."
             </div>
-            <Link href="/contact-us" className="btn-gold inline-flex mt-2">Book an Implant Consultation →</Link>
+            <Link href="/book-online" className="btn-gold inline-flex mt-2">Book an Implant Consultation →</Link>
           </div>
 
           <div className="lg:col-span-5 space-y-4">
@@ -149,7 +149,7 @@ export default function DentalImplantsPage() {
             <p className="font-body text-cream/50 text-sm mb-6">Call us or book online for an implant consultation with Dr. Charl Jacob.</p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a href="tel:0363110520" className="btn-gold">📞 (03) 6311 0520</a>
-              <Link href="/contact-us" className="btn-outline-cream">Book a Consultation</Link>
+              <Link href="/book-online" className="btn-outline-cream">Book a Consultation</Link>
             </div>
             <div className="absolute bottom-0 left-0 right-0 h-px bg-gold-gradient" />
           </div>
