@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ── Root tokens ───────────────────────────────────── */
+:root {
+  --ink:       #0a0e0d;
+  --forest:    #0d3d2b;
+  --emerald:   #1a6645;
+  --sage:      #4a9070;
+  --mist:      #e8f2ec;
+  --champagne: #c9a84c;
+  --gold:      #e8c96a;
+  --cream:     #faf7f0;
+  --warm:      #f5efe3;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Gold rule divider ─────────────────────────────── */
+.gold-rule {
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #c9a84c, #e8c96a, #c9a84c);
+  border-radius: 2px;
+}
+
+/* ── Diagonal clip ─────────────────────────────────── */
+.clip-diagonal {
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+.clip-diagonal-reverse {
+  clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
+}
+
+/* ── Noise texture overlay ─────────────────────────── */
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Animations ────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-fade-up      { animation: fadeUp 0.7s ease-out forwards; }
+.animate-fade-up-delay { animation: fadeUp 0.7s ease-out 0.2s both; }
+.animate-slide-in     { animation: slideIn 0.6s ease-out forwards; }
+
+.shimmer-text {
+  background: linear-gradient(90deg, #c9a84c 0%, #e8c96a 25%, #fff8e0 50%, #e8c96a 75%, #c9a84c 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ── Ticker ────────────────────────────────────────── */
+.ticker-wrap { overflow: hidden; }
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 35s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+/* ── Button base ───────────────────────────────────── */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #c9a84c, #e8c96a, #c9a84c);
+  background-size: 200% auto;
+  color: #0a0e0d;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: 0;
+  transition: background-position 0.5s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.25);
+}
+.btn-gold:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201,168,76,0.4);
+}
+
+.btn-outline-cream {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: #faf7f0;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  border: 1px solid rgba(250,247,240,0.4);
+  transition: background 0.3s, border-color 0.3s;
+}
+.btn-outline-cream:hover {
+  background: rgba(250,247,240,0.1);
+  border-color: rgba(250,247,240,0.8);
+}
+
+/* ── Card hover lift ───────────────────────────────── */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(.22,.61,.36,1), box-shadow 0.3s;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(10,14,13,0.12);
+}
+
+/* ── Gold border left accent ───────────────────────── */
+.border-gold-left {
+  border-left: 3px solid #c9a84c;
+}
