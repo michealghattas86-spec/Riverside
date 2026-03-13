@@ -8,7 +8,7 @@ const team = [
     role: "Dentist",
     qual: "BDS (JCU)",
     specialty: "Implant Dentistry",
-    photo: "/team/charl-jacob.jpg",
+    photo: "/team/charl.jpg",
     bio: ["Dr. Jacob graduated from James Cook University with a Bachelor of Dental Surgery and also holds a Veterinary Medicine degree from Cairo University (2003).", "He believes in patient education for optimal oral health, with a particular interest in implant dentistry across all aspects of general practice."],
   },
   {
@@ -16,7 +16,7 @@ const team = [
     role: "Dentist",
     qual: "BDS (Gujarat)",
     specialty: "Root Canal & Invisalign",
-    photo: "/team/rony-gandhi.jpg",
+    photo: "/team/rony.jpg",
     bio: ["Dr. Gandhi graduated from Gujarat University in 2006 and worked as a primary dentist in India for over 26 years before joining our team.", "He has completed over 5,000 root canal treatments and is certified in Invisalign. Outside the clinic he enjoys cricket and travelling with family."],
   },
   {
@@ -24,7 +24,7 @@ const team = [
     role: "Dentist",
     qual: "BDS · MPH (Deakin)",
     specialty: "Surgical & Cosmetic",
-    photo: "/team/jatin-chavda.jpg",
+    photo: "/team/jatin.jpg",
     bio: ["Dr. Chavda graduated from Rajiv Gandhi University in 2014 and holds a postgraduate Master of Public Health from Deakin University.", "He sees dentistry as the perfect mix of medicine, science and art — his expertise lies in surgical and cosmetic dentistry."],
   },
   {
@@ -32,7 +32,7 @@ const team = [
     role: "Dentist",
     qual: "BDS (JCU)",
     specialty: "Smile Reconstruction",
-    photo: "/team/james-liu.jpg",
+    photo: "/team/james.jpg",
     bio: ["Dr. Liu is a James Cook University graduate who has practised in Hervey Bay and Brisbane before being drawn to Tasmania's beautiful natural environment.", "Gentle, caring and thorough — he loves rebuilding smiles and giving patients back their confidence."],
   },
   {
@@ -40,7 +40,7 @@ const team = [
     role: "Dentist",
     qual: "",
     specialty: "Clear Aligners & Orthodontics",
-    photo: "/team/shilpa-dhawan.jpg",
+    photo: "/team/shilpa.jpg",
     bio: ["Dr. Shilpa's top priority is caring for anxious patients. She uses a patient-focused approach to create a stress-free environment.", "She advocates strongly for preventive care tailored to each individual and serves the Riverside and Launceston communities with great warmth."],
   },
   {
@@ -48,7 +48,7 @@ const team = [
     role: "Oral Health Therapist",
     qual: "BOHSc (La Trobe)",
     specialty: "Prevention & Gum Health",
-    photo: "/team/lauren-oldham.jpg",
+    photo: "/team/lauren.jpg",
     bio: ["Lauren graduated in 2013 with a Bachelor of Oral Health Science from La Trobe University and is qualified in both dental therapy and dental hygiene.", "Her focus is the prevention and treatment of dental decay and gum disease. A Tasmanian local, she loves travelling and the beach."],
   },
   {
