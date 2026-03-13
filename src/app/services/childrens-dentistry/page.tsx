@@ -169,7 +169,7 @@ export default function ChildrensDentistryPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="tel:0363110520" className="btn-gold">📞 (03) 6311 0520</a>
-            <Link href="/contact-us" className="btn-outline-cream">Book Online</Link>
+            <Link href="/book-online" className="btn-outline-cream">Book Online</Link>
           </div>
         </div>
       </section>
