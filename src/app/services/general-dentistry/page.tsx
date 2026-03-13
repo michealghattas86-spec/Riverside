@@ -87,7 +87,7 @@ export default function GeneralDentistryPage() {
             <p>
               As preferred providers for Medibank, Bupa, CBHS and NIB, most health fund members pay zero gap on many general dental services. We also bulk bill eligible children under the Medicare Child Dental Benefits Schedule.
             </p>
-            <Link href="/contact-us" className="btn-gold inline-flex mt-2">Book an Appointment →</Link>
+            <Link href="/book-online" className="btn-gold inline-flex mt-2">Book an Appointment →</Link>
           </div>
 
           <div className="lg:col-span-5 space-y-4">
