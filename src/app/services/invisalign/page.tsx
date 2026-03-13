@@ -33,7 +33,7 @@ export default function InvisalignPage() {
             <p>
               Call us or book online to arrange a free initial consultation and find out if Invisalign is the right solution for you.
             </p>
-            <Link href="/contact-us" className="btn-gold inline-flex mt-2">Book a Free Consultation →</Link>
+            <Link href="/book-online" className="btn-gold inline-flex mt-2">Book a Free Consultation →</Link>
           </div>
 
           <div className="lg:col-span-5 space-y-4">
@@ -129,7 +129,7 @@ export default function InvisalignPage() {
 
           <div className="mt-10 text-center">
             <p className="font-body text-sm text-ink/40 mb-6">Not sure if your case is suitable? Our dentists can assess you at a free consultation.</p>
-            <Link href="/contact-us" className="btn-gold">Book a Free Consultation →</Link>
+            <Link href="/book-online" className="btn-gold">Book a Free Consultation →</Link>
           </div>
         </div>
       </section>
@@ -148,7 +148,7 @@ export default function InvisalignPage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a href="tel:0363110520" className="btn-gold">📞 Call (03) 6311 0520</a>
-            <Link href="/contact-us" className="btn-outline-cream">Book Online</Link>
+            <Link href="/book-online" className="btn-outline-cream">Book Online</Link>
           </div>
         </div>
       </section>
