@@ -6,15 +6,15 @@
 
 /* ── Root tokens ───────────────────────────────────── */
 :root {
-  --ink:       #0a0e0d;
-  --forest:    #0d3d2b;
-  --emerald:   #1a6645;
-  --sage:      #4a9070;
-  --mist:      #e8f2ec;
+  --ink:       #080e10;
+  --forest:    #0a3d45;
+  --emerald:   #0e5a69;
+  --sage:      #2a8a9e;
+  --mist:      #e0f4f7;
   --champagne: #c9a84c;
   --gold:      #e8c96a;
-  --cream:     #faf7f0;
-  --warm:      #f5efe3;
+  --cream:     #f5fafb;
+  --warm:      #eaf4f6;
 }
 
 html { scroll-behavior: smooth; }
@@ -151,13 +151,13 @@ body {
   0%, 100% {
     border-color: rgba(201,168,76,0.10);
     box-shadow: none;
-    background-color: rgba(13,61,43,0.20);
+    background-color: rgba(10,61,69,0.20);
     transform: translateY(0px);
   }
   50% {
     border-color: rgba(201,168,76,0.40);
     box-shadow: 0 0 20px rgba(201,168,76,0.15), inset 0 0 16px rgba(201,168,76,0.05);
-    background-color: rgba(13,61,43,0.45);
+    background-color: rgba(10,61,69,0.45);
     transform: translateY(-3px);
   }
 }
