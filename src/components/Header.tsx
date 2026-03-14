@@ -74,7 +74,7 @@ const nav: NavItem[] = [
     ],
   },
   { label: "About", href: "/about-us" },
-  { label: "FAQs", href: "/faqs" },
+  { label: "Smile Stories", href: "/smile-stories" },
   {
     label: "Offers",
     href: "/special-offers",
