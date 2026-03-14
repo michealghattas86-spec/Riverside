@@ -1,83 +1,174 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import ServiceCards from "@/components/ServiceCards";
 
 export const metadata: Metadata = {
-  title: "Cosmetic Dentistry Launceston & Riverside Tasmania",
-  description: "Cosmetic dental treatments in Riverside, Tasmania — composite veneers, porcelain veneers, teeth whitening and smile makeovers.",
+  title: "Dental Services | Dentist Riverside & Launceston Tasmania",
+  description: "Comprehensive dental services in Riverside, Tasmania — general dentistry, cosmetic dentistry, dental implants, Invisalign, children's dentistry and more. Serving Launceston and West Tamar.",
+  keywords: ["dentist Riverside", "dentist Launceston", "dental services Tasmania", "general dentistry", "cosmetic dentistry", "dental implants Launceston", "Invisalign Tasmania", "children's dentist Riverside"],
 };
 
-const cards = [
+const services = [
   {
-    title: "Composite Veneers",
-    subtitle: "Unlock Your Dream Smile in a Single Visit",
-    desc: "Tired of the little imperfections holding you back from smiling your brightest? Imagine a quick, comfortable transformation that banishes chips, hides cracks, closes gaps and waves goodbye to minor discolouration — all in one appointment. A natural-looking enhancement so seamless, no one will ever know your secret.",
-    photo: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=800&q=80",
-    link: "/services/cosmetic-dentistry/composite-veneers",
-    linkText: "Learn more",
+    num: "01",
+    title: "General Dentistry",
+    desc: "Routine check-ups, scale and cleans, fillings, extractions, root canals and preventive care for the whole family. Your oral health foundation.",
+    features: ["Check-up & Clean", "White Fillings", "Root Canal Treatment", "Extractions", "Mouthguards", "Fissure Sealants"],
+    href: "/services/general-dentistry",
   },
   {
-    title: "Porcelain Veneers",
-    subtitle: "Invest in Timeless Beauty. Craft Your Masterpiece Smile.",
-    desc: "Yearning for a smile that exudes elegance and lasts for years to come? Porcelain veneers are meticulously crafted, ultra-thin masterpieces of dental artistry, custom-designed to fit your unique smile like a glove. From stubborn discolouration to misshapen teeth, we'll sculpt a flawless, breathtaking smile.",
-    photo: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80",
-    link: "/services/cosmetic-dentistry/porcelain-veneers",
-    linkText: "Learn more",
+    num: "02",
+    title: "Cosmetic Dentistry",
+    desc: "Transform your smile with professional teeth whitening, porcelain veneers and cosmetic reshaping — all delivered with artistry and precision.",
+    features: ["Teeth Whitening", "Porcelain Veneers", "Composite Bonding", "Smile Makeovers", "Tooth Reshaping", "Aesthetic Injections"],
+    href: "/services/cosmetic-dentistry",
   },
   {
-    title: "Teeth Whitening",
-    subtitle: "Reveal Your Most Dazzling Smile. It's Easier Than You Think!",
-    desc: "Is your smile looking a little lacklustre? We use advanced, safe, and highly effective techniques to gently lift years of discolouration, revealing a smile that truly sparkles. Imagine the confidence that comes with knowing your smile is at its absolute brightest.",
-    photo: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
-    link: "/services/cosmetic-dentistry/teeth-whitening",
-    linkText: "Learn more",
+    num: "03",
+    title: "Dental Implants",
+    desc: "Permanent, natural-looking tooth replacements that restore your bite, speech and confidence. Led by Dr. Charl Jacob, our implant specialist.",
+    features: ["Single Tooth Implants", "Multiple Implants", "Implant Crowns", "Bone Grafting", "Implant Consultation", "Long-term Aftercare"],
+    href: "/services/dental-implants",
   },
   {
-    title: "Smile Makeover",
-    subtitle: "Embark on Your Smile Revolution! Unleash Your Ultimate Confidence.",
-    desc: "Ready for a complete smile transformation that will not only enhance your appearance but also elevate your self-esteem? A smile makeover is a personalised journey designed to address all your cosmetic dental desires — combining whitening, veneers, orthodontics, gum contouring, and more.",
-    photo: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80",
-    link: "/services/cosmetic-dentistry/smile-makeover",
-    linkText: "Learn more",
+    num: "04",
+    title: "Invisalign",
+    desc: "Straighten your teeth discreetly with custom clear aligners. Dr. Rony Gandhi is fully certified to deliver Invisalign treatment at our Riverside clinic.",
+    features: ["Free Consultation", "Custom Clear Aligners", "No Metal Brackets", "Removable & Comfortable", "Regular Progress Reviews", "Retention Phase"],
+    href: "/services/invisalign",
+  },
+  {
+    num: "05",
+    title: "Children's Dentistry",
+    desc: "Gentle, friendly dental care for children from their first visit. We bulk bill eligible children under the Medicare Child Dental Benefits Schedule.",
+    features: ["From Age 2", "Fissure Sealants", "Fluoride Treatments", "Anxiety-Free Approach", "Bulk Bill CDBS", "Parent Education"],
+    href: "/services/childrens-dentistry",
+  },
+  {
+    num: "06",
+    title: "Aesthetic Nursing",
+    desc: "Holistic skin health and cosmetic treatments delivered by Tassiana Miranda, our registered aesthetic nurse.",
+    features: ["Anti-Wrinkle Injections", "Lip Enhancements", "Skin Consultations", "Evidence-Based Practice", "Natural Results", "Personalised Plans"],
+    href: "/contact-us",
   },
 ];
 
-export default function CosmeticDentistryPage() {
+export default function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Cosmetic Dentistry"
-        title="Your Best Smile"
-        subtitle="If you are reading this — smile at yourself. Artistry meets clinical excellence in every treatment we offer."
+        eyebrow="What We Do"
+        title="Dental Services"
+        subtitle="Comprehensive care across general, cosmetic and specialist dentistry — all under one roof in Riverside, Tasmania."
       />
-      <section className="py-24 bg-cream">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-7 space-y-5 font-body text-ink/60 leading-relaxed">
-            <p>At Riverside No Gap Dental, cosmetic dentistry is about more than aesthetics — it is about confidence. We believe every patient deserves to love their smile, and our cosmetic treatments are designed to achieve exactly that.</p>
-            <p>From a simple single-visit composite veneer to a full smile makeover combining multiple treatments, our experienced team crafts personalised treatment plans that reflect your unique goals, timeline and budget.</p>
-            <div className="border-l-4 border-champagne pl-6 italic text-ink/50 font-display text-lg">"A smile is the prettiest thing you can wear."</div>
-            <Link href="/book-online" className="btn-gold inline-flex mt-2">Book a Consultation →</Link>
+
+      {/* Intro */}
+      <section className="py-20 bg-cream">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-3">Serving Riverside & Launceston</p>
+            <h2 className="font-display text-4xl lg:text-5xl font-light italic text-ink leading-none mb-4">
+              Everything Your <em className="not-italic font-semibold">Family Needs</em>
+            </h2>
+            <span className="gold-rule block mb-6" />
+            <p className="font-body text-ink/60 leading-relaxed mb-4">
+              Riverside No Gap Dental is an 8-chair practice offering the full spectrum of dental care — from a child's first check-up to complex restorative and cosmetic work. Our experienced team of dentists, oral health therapists and aesthetic nurses means you never need to be referred elsewhere for most treatments.
+            </p>
+            <p className="font-body text-ink/60 leading-relaxed mb-8">
+              We are conveniently located in the Health and Wellbeing Centre at 1 Windsor Drive, Riverside — just minutes from Launceston city centre, with 112 free car parks and full disability access.
+            </p>
+            <Link href="/book-online" className="btn-gold">Book an Appointment →</Link>
           </div>
-          <div className="lg:col-span-5">
-            <div className="bg-forest noise p-8 relative">
-              <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-champagne" />
-              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-champagne" />
-              <div className="h-px bg-gold-gradient mb-6" />
-              <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-4">Our Cosmetic Services</p>
-              <ul className="space-y-3">
-                {["Composite Veneers — same-day results","Porcelain Veneers — timeless artistry","Professional Teeth Whitening — $299","Smile Makeovers — fully personalised","Tooth Reshaping & Contouring","Gum Contouring"].map((item) => (
-                  <li key={item} className="flex items-start gap-2 font-body text-sm text-cream/60">
-                    <span className="text-champagne flex-shrink-0 mt-0.5">◆</span>{item}
-                  </li>
-                ))}
-              </ul>
-              <div className="h-px bg-gold-gradient mt-6" />
-            </div>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { value: "8", label: "Treatment Chairs" },
+              { value: "20+", label: "Team Members" },
+              { value: "Mon–Sat", label: "Extended Hours" },
+              { value: "5000+", label: "Root Canals by Dr. Gandhi" },
+            ].map((s) => (
+              <div key={s.label} className="bg-white border border-ink/5 p-6 text-center card-lift">
+                <p className="font-display text-3xl font-semibold text-champagne">{s.value}</p>
+                <p className="font-body text-xs text-ink/40 uppercase tracking-widest mt-1">{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-      <ServiceCards cards={cards} columns={2} sectionEyebrow="Our Treatments" sectionTitle="Cosmetic Dental Treatments" bg="warm" />
+
+      {/* Services Grid */}
+      <section className="py-20 bg-warm">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-14">
+            <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-3">Our Services</p>
+            <h2 className="font-display text-4xl lg:text-5xl font-light italic text-ink">
+              Treatments We <em className="not-italic font-semibold">Offer</em>
+            </h2>
+            <span className="gold-rule mx-auto mt-4 block" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {services.map((s) => (
+              <Link key={s.num} href={s.href} className="group card-lift block bg-white border border-ink/5 p-8">
+                <div className="flex items-start justify-between mb-4">
+                  <p className="font-display text-5xl font-semibold text-champagne/30 group-hover:text-champagne/60 transition-colors">{s.num}</p>
+                </div>
+                <div className="w-8 h-px bg-champagne mb-4 group-hover:w-16 transition-all duration-300" />
+                <h3 className="font-display text-2xl font-semibold text-ink mb-2 group-hover:text-emerald transition-colors">{s.title}</h3>
+                <p className="font-body text-sm text-ink/50 leading-relaxed mb-5">{s.desc}</p>
+                <ul className="grid grid-cols-2 gap-1.5 mb-5">
+                  {s.features.map((f) => (
+                    <li key={f} className="flex items-center gap-2 font-body text-xs text-ink/40">
+                      <span className="w-1 h-1 bg-champagne rounded-full flex-shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <p className="font-body text-xs uppercase tracking-widest text-champagne font-semibold">Learn More →</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Health funds */}
+      <section className="py-16 bg-forest relative noise">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 text-center">
+          <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-3">No Gap & Bulk Billing</p>
+          <h2 className="font-display text-3xl text-cream font-light italic mb-4">
+            We Accept All Major <em className="not-italic font-semibold">Health Funds</em>
+          </h2>
+          <p className="font-body text-cream/50 text-sm max-w-xl mx-auto mb-8">
+            Preferred providers for Medibank, Bupa, CBHS and NIB. We also bulk bill children under the Medicare Child Dental Benefits Schedule, and eligible DVA patients.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["Medibank", "Bupa", "CBHS", "NIB", "Medicare CDBS", "DVA", "Denticare", "Zip Pay", "SmileCo"].map((f) => (
+              <span key={f} className="font-body text-sm border border-champagne/30 text-cream/60 px-4 py-2 hover:border-champagne hover:text-champagne transition-all">
+                {f}
+              </span>
+            ))}
+          </div>
+          <div className="mt-8">
+            <Link href="/special-offers/payment-options" className="btn-gold">View Payment Options →</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-cream">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-3">Ready to Book?</p>
+          <h2 className="font-display text-4xl text-ink font-light italic mb-6">
+            Your Nearest Dentist in <em className="not-italic font-semibold">Riverside & Launceston</em>
+          </h2>
+          <p className="font-body text-ink/50 text-sm mb-8 leading-relaxed">
+            Located at the Health and Wellbeing Centre, 1 Windsor Drive, Riverside TAS 7250. Open Monday–Friday 8am–7pm and Saturday 8am–5pm. Call us or send a message to book your appointment today.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href="tel:0363110520" className="btn-gold">📞 (03) 6311 0520</a>
+            <Link href="/book-online" className="btn-outline-ink">Book Online →</Link>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
