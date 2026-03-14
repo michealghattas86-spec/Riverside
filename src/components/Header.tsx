@@ -73,15 +73,7 @@ const nav: NavItem[] = [
       },
     ],
   },
-  {
-    label: "About",
-    href: "/about-us",
-    children: [
-      { label: "Our Practice", href: "/about-us/our-practice", sub: "State-of-the-art 8-chair clinic" },
-      { label: "Our Team", href: "/about-us/our-team", sub: "20+ dedicated professionals" },
-      { label: "Our Facilities", href: "/about-us/our-facilities", sub: "Modern, accessible & paperless" },
-    ],
-  },
+  { label: "About", href: "/about-us" },
   { label: "FAQs", href: "/faqs" },
   {
     label: "Offers",
