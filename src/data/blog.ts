@@ -1076,7 +1076,7 @@ export const postsBatch2: BlogPost[] = [
     publishedAt: "2025-05-10",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1588776814546-1ffbb172e00c?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773477325/Root_canal_treatment__d5nutr.jpg",
     body: [
       {
         type: "lead",
@@ -1177,7 +1177,7 @@ export const postsBatch2: BlogPost[] = [
     publishedAt: "2025-05-17",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773477325/Wisdom_teeth_removal_oefu5d.jpg",
     body: [
       {
         type: "lead",
@@ -1279,7 +1279,7 @@ export const postsBatch2: BlogPost[] = [
     publishedAt: "2025-05-24",
     readTime: "6 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1612776572997-76cc42e058c3?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773477325/Sensitive_teeth_ofjjxr.jpg",
     body: [
       {
         type: "lead",
@@ -1404,7 +1404,7 @@ export const postsBatch2: BlogPost[] = [
     publishedAt: "2025-05-31",
     readTime: "7 min read",
     featured: true,
-    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773477325/Two_friends_eating_wrwkzc.jpg",
     body: [
       {
         type: "lead",
@@ -1527,7 +1527,7 @@ export const postsBatch2: BlogPost[] = [
     publishedAt: "2025-06-07",
     readTime: "6 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773477325/Pregnant_woman_waiting_clinic_csznyg.jpg",
     body: [
       {
         type: "lead",
@@ -1624,7 +1624,7 @@ export const postsBatch2: BlogPost[] = [
     publishedAt: "2025-06-14",
     readTime: "6 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773477325/Dental_crowns_xtnlyy.jpg",
     body: [
       {
         type: "lead",
@@ -1727,7 +1727,7 @@ export const postsBatch2: BlogPost[] = [
     publishedAt: "2025-06-21",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1544717305-2782549b5136?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773477324/Childhood_tooth_decay_d41qis.jpg",
     body: [
       {
         type: "lead",
@@ -1843,7 +1843,7 @@ export const postsBatch2: BlogPost[] = [
     publishedAt: "2025-06-28",
     readTime: "6 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773477324/Dry_mouth_hjyv8e.jpg",
     body: [
       {
         type: "lead",
@@ -1944,7 +1944,7 @@ export const postsBatch2: BlogPost[] = [
     publishedAt: "2025-07-05",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773477324/Tmj_pain_q2l050.jpg",
     body: [
       {
         type: "lead",
@@ -2048,7 +2048,7 @@ export const postsBatch2: BlogPost[] = [
     publishedAt: "2025-07-12",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773477324/Mouth_with_tooth_decays_ynkkry.jpg",
     body: [
       {
         type: "lead",
