@@ -1056,10 +1056,9 @@ export const posts: BlogPost[] = [
         content:
           "Whether you need a sports mouthguard for a child starting contact sport this season, or a nightguard to protect teeth that are showing clear signs of grinding damage, we can help. We take a precise digital scan of your teeth and send it to an Australian dental laboratory for fabrication. Sports mouthguards are typically ready within one to two weeks. The investment is modest relative to the cost of repairing or replacing the teeth a mouthguard protects.",
       },
-   import type { BlogPost } from "./posts"; // adjust import path as needed
-
-export const postsBatch2: BlogPost[] = [
-  // ─────────────────────────────────────────────────────────────
+  
+  ],
+  },
   // POST 11 — Root Canal Therapy
   // Target keywords: root canal Riverside Tasmania, root canal treatment
   //                  Launceston, do root canals hurt, endodontics Tasmania
