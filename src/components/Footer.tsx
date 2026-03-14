@@ -45,7 +45,7 @@ export default function Footer() {
           <h4 className="font-display text-cream text-lg mb-1">Navigate</h4>
           <span className="gold-rule mb-5 block" />
           <ul className="space-y-2 text-sm">
-            {[["Home", "/"], ["About Us", "/about-us"], ["Our Team", "/about-us/our-team"], ["FAQs", "/faqs"], ["Special Offers", "/special-offers"], ["Contact Us", "/contact-us"]].map(([l, h]) => (
+            {[["Home", "/"], ["About Us", "/about-us"], ["Our Team", "/about-us/our-team"], ["Smile Stories", "/smile-stories"], ["Special Offers", "/special-offers"], ["Contact Us", "/contact-us"]].map(([l, h]) => (
               <li key={h}>
                 <Link href={h} className="hover:text-champagne transition-colors flex items-center gap-2">
                   <span className="w-3 h-px bg-champagne/30" />{l}
