@@ -155,8 +155,8 @@ export default function Header() {
           <Image
             src="/logo.jpg"
             alt="Riverside No Gap Dental"
-            width={220}
-            height={70}
+            width={440}
+            height={140}
             className="h-14 w-auto object-contain"
             priority
           />
