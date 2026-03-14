@@ -90,7 +90,7 @@ export const posts: BlogPost[] = [
       {
         type: "p",
         content:
-          "Brushing and flossing, even done perfectly, cannot remove tartar (calculus) once it has formed. Tartar begins hardening from plaque within 24 to 72 hours and once set, only professional instruments can remove it. Our hygienists use ultrasonic scalers and fine hand instruments to remove all tartar deposits — particularly from below the gum line, where it causes chronic inflammation and bone destruction that leads to tooth loss.",
+          "Brushing and flossing, even done perfectly, cannot remove tartar (calculus)  once it has formed. Tartar begins hardening from plaque within 24 to 72 hours and once set, only professional instruments can remove it. Our hygienists use ultrasonic scalers and fine hand instruments to remove all tartar deposits — particularly from below the gum line, where it causes chronic inflammation and bone destruction that leads to tooth loss.",
       },
       {
         type: "p",
