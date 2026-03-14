@@ -3,7 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
-const nav = [
+type NavGrandchild = { label: string; href: string };
+type NavChild = { label: string; href: string; sub: string; grandchildren?: NavGrandchild[] };
+type NavItem = { label: string; href: string; children?: NavChild[] };
+
+const nav: NavItem[] = [
   { label: "Home", href: "/" },
   {
     label: "Services",
