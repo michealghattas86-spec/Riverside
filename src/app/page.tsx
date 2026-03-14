@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
+import VideoHero from "@/components/VideoHero";
 
 export const metadata: Metadata = {
   title: "Riverside No Gap Dental | Dentist Riverside & Launceston Tasmania",
@@ -113,16 +114,7 @@ export default function HomePage() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
 
         {/* Video background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/myvideo.mp4" type="video/mp4" />
-          <source src="https://videos.pexels.com/video-files/6003645/6003645-uhd_2560_1440_30fps.mp4" type="video/mp4" />
-        </video>
+        <VideoHero playbackRate={0.4} />
 
         {/* Dark gradient overlay — heavier at top (behind nav) and bottom */}
         <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/50 to-ink/75" />
