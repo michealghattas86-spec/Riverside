@@ -128,7 +128,7 @@ export default function HomePage() {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pt-32 flex flex-col min-h-screen">
           {/* Hero text — sits in upper portion of video */}
-          <div className="flex-1 flex flex-col justify-start max-w-2xl animate-fade-up pt-16 pb-8">
+          <div className="flex-1 flex flex-col justify-start max-w-2xl animate-fade-up pt-4 pb-8">
             <p className="font-body text-champagne text-xs tracking-[0.4em] uppercase mb-6">
               Riverside · Tasmania
             </p>
