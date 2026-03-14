@@ -127,55 +127,41 @@ export default function HomePage() {
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pt-32 pb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[70vh]">
-
-            <div className="animate-fade-up">
-              <p className="font-body text-champagne text-xs tracking-[0.4em] uppercase mb-6">
-                Riverside · Tasmania
-              </p>
-              <h1 className="font-display text-cream leading-none mb-6">
-                <span className="block text-6xl sm:text-7xl lg:text-8xl font-light italic">Your Smile,</span>
-                <span className="block text-6xl sm:text-7xl lg:text-8xl font-semibold shimmer-text">No Gap.</span>
-              </h1>
-              <div className="w-16 h-px bg-champagne mb-8" />
-              <p className="font-body text-cream/70 text-lg leading-relaxed max-w-lg mb-10">
-                Comprehensive dental care of the highest standard for patients of all ages — with extended hours, complete cost transparency, and no out-of-pocket gap for major health fund members.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <a href="tel:0363110520" className="btn-gold">
-                  Call (03) 6311 0520
-                </a>
-                <Link href="/book-online" className="btn-outline-cream">
-                  Book Appointment
-                </Link>
-              </div>
-            </div>
-
-            <div className="hidden lg:block animate-fade-up-delay">
-              <div className="relative">
-                <div className="border border-champagne/20 bg-ink/50 backdrop-blur-md p-10">
-                  <div className="h-px bg-gold-gradient mb-8" />
-                  <p className="font-display text-cream/60 text-sm italic mb-6">
-                    "The type of clinic we would want to attend if we were the patient."
-                  </p>
-                  <div className="grid grid-cols-2 gap-px bg-champagne/10">
-                    {stats.map((s) => (
-                      <div key={s.label} className="bg-forest/70 backdrop-blur p-6 text-center">
-                        <p className="font-display text-champagne text-4xl font-semibold">{s.value}</p>
-                        <p className="font-body text-cream/40 text-xs uppercase tracking-widest mt-1">{s.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="h-px bg-gold-gradient mt-8" />
-                </div>
-                <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-champagne" />
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-champagne" />
-              </div>
+          {/* Hero text */}
+          <div className="min-h-[65vh] flex flex-col justify-center max-w-2xl animate-fade-up">
+            <p className="font-body text-champagne text-xs tracking-[0.4em] uppercase mb-6">
+              Riverside · Tasmania
+            </p>
+            <h1 className="font-display text-cream leading-none mb-6">
+              <span className="block text-6xl sm:text-7xl lg:text-8xl font-light italic">Your Smile,</span>
+              <span className="block text-6xl sm:text-7xl lg:text-8xl font-semibold shimmer-text">No Gap.</span>
+            </h1>
+            <div className="w-16 h-px bg-champagne mb-8" />
+            <p className="font-body text-cream/70 text-lg leading-relaxed max-w-lg mb-10">
+              Comprehensive dental care of the highest standard for patients of all ages — with extended hours, complete cost transparency, and no out-of-pocket gap for major health fund members.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <a href="tel:0363110520" className="btn-gold">
+                Call (03) 6311 0520
+              </a>
+              <Link href="/book-online" className="btn-outline-cream">
+                Book Appointment
+              </Link>
             </div>
           </div>
 
+          {/* Stats bar — 4-column horizontal */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-champagne/15 mb-16">
+            {stats.map((s) => (
+              <div key={s.label} className="bg-forest/60 backdrop-blur-sm px-8 py-7 text-center">
+                <p className="font-display text-champagne text-4xl lg:text-5xl font-semibold leading-none mb-2">{s.value}</p>
+                <p className="font-body text-cream/50 text-xs uppercase tracking-[0.2em]">{s.label}</p>
+              </div>
+            ))}
+          </div>
+
           {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/30">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/30">
             <p className="font-body text-xs tracking-widest uppercase">Scroll</p>
             <div className="w-px h-10 bg-gradient-to-b from-cream/30 to-transparent" />
           </div>
