@@ -117,9 +117,9 @@ export default function HomePage() {
         <VideoHero playbackRate={0.4} />
 
         {/* Dark gradient overlay — heavier at top (behind nav) and bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/50 to-ink/75" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/20 to-ink/55" />
         {/* Subtle green tint overlay matching brand */}
-        <div className="absolute inset-0 bg-forest/30" />
+        <div className="absolute inset-0 bg-forest/10" />
 
         {/* Decorative lines */}
         <div className="absolute top-1/3 left-1/2 w-px h-32 bg-gradient-to-b from-transparent via-champagne/20 to-transparent" />
