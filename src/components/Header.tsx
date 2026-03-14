@@ -146,8 +146,9 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-ink/95 backdrop-blur-md shadow-2xl py-3" : "bg-ink py-5"
+        scrolled ? "backdrop-blur-md shadow-2xl py-3" : "py-5"
       }`}
+      style={{ background: "linear-gradient(135deg, #7dc520 0%, #a3d62e 50%, #7dc520 100%)" }}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
         {/* Logo */}
@@ -179,7 +180,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="flex items-center gap-1 px-4 py-2 font-body text-sm text-cream/80 hover:text-champagne transition-colors tracking-wide"
+                  className="flex items-center gap-1 px-4 py-2 font-body text-sm text-ink/80 hover:text-ink transition-colors tracking-wide font-semibold"
                 >
                   {item.label}
                   <svg className={`w-3 h-3 transition-transform ${dropdown === item.label ? "rotate-180" : ""}`} fill="currentColor" viewBox="0 0 20 20">
@@ -216,7 +217,7 @@ export default function Header() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="px-4 py-2 font-body text-sm text-cream/80 hover:text-champagne transition-colors tracking-wide"
+                className="px-4 py-2 font-body text-sm text-ink/80 hover:text-ink transition-colors tracking-wide font-semibold"
               >
                 {item.label}
               </Link>
@@ -226,7 +227,7 @@ export default function Header() {
 
         {/* CTA */}
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:0363110520" className="font-body text-sm text-cream/70 hover:text-champagne transition-colors tracking-wide">
+          <a href="tel:0363110520" className="font-body text-sm text-ink/80 hover:text-ink transition-colors tracking-wide font-semibold">
             (03) 6311 0520
           </a>
           <Link href="/book-online" className="btn-gold text-xs py-2.5 px-6">
@@ -236,14 +237,14 @@ export default function Header() {
 
         {/* Mobile hamburger */}
         <button
-          className="lg:hidden text-cream p-2"
+          className="lg:hidden text-ink p-2"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
           <div className="space-y-1.5 w-6">
-            <span className={`block h-px bg-champagne transition-all ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block h-px bg-champagne transition-all ${mobileOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-px bg-champagne transition-all ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+            <span className={`block h-px bg-ink transition-all ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
+            <span className={`block h-px bg-ink transition-all ${mobileOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-px bg-ink transition-all ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
           </div>
         </button>
       </div>
