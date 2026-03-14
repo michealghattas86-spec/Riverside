@@ -34,7 +34,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-03-01",
     readTime: "6 min read",
     featured: true,
-    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773460820/Dental_check_up_bd7t3u.jpg",
     body: [
       {
         type: "lead",
@@ -144,7 +144,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-03-08",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-15982f56989800-fe5f95da9787?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773460534/Composite_vs_porcelain_veneers_cfplv1.jpg",
     body: [
       {
         type: "lead",
@@ -262,7 +262,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-03-15",
     readTime: "5 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1629909615957-be38d48fbbe4?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773460534/Child_see_a_dentist__y2ief8.jpg",
     body: [
       {
         type: "lead",
@@ -370,7 +370,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-03-22",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773460534/Dental_implants_dps4xv.jpg",
     body: [
       {
         type: "lead",
@@ -479,7 +479,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-03-29",
     readTime: "5 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773460534/Teeth_discoloration_gwrb5f.jpg",
     body: [
       {
         type: "lead",
@@ -586,7 +586,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-04-05",
     readTime: "6 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773460534/Bleeding_gums_fkmcf6.jpg",
     body: [
       {
         type: "lead",
@@ -688,7 +688,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-04-12",
     readTime: "5 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1584515933487-779824d29309?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773460533/Cracked_tooth_eluyto.jpg",
     body: [
       {
         type: "lead",
@@ -784,7 +784,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-04-19",
     readTime: "6 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773460973/Clearaligners_teeth_ezn7gx.jpg",
     body: [
       {
         type: "lead",
@@ -884,7 +884,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-04-26",
     readTime: "5 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773461088/Overcoming_dental_anxiety_aoysg9.jpg",
     body: [
       {
         type: "lead",
@@ -972,7 +972,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-05-03",
     readTime: "5 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=1200&q=80",
+    image: "https://res.cloudinary.com/dcplbjvkf/image/upload/v1773461168/Custom_mouthguards_effjnb.jpg",
     body: [
       {
         type: "lead",
