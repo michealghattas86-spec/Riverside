@@ -1,118 +1,186 @@
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/PageHero";
-import blogs from "@/data/blogs";
+import { client } from "@/sanity/lib/client";
+import { postsQuery } from "@/sanity/lib/queries";
+import { posts as staticPosts } from "@/data/blog";
 
-export const metadata = {
-  title: "Smile Stories",
-  description:
-    "Stories, guides and expert insights from the team at Riverside No Gap Dental.",
+export const revalidate = 60;
+
+const categoryColours: Record<string, string> = {
+  "Preventive Care":    "bg-emerald/10 text-emerald",
+  "Cosmetic Dentistry": "bg-champagne/10 text-champagne",
+  "Family Dentistry":   "bg-sage/10 text-sage",
+  "Dental Implants":    "bg-forest/10 text-forest",
+  "Oral Health":        "bg-mist text-emerald",
+  "Teeth Whitening":    "bg-champagne/10 text-champagne",
+  "Service Spotlight":  "bg-champagne/10 text-champagne",
+  "Ask the Dentist":    "bg-emerald/10 text-emerald",
 };
 
-export default function SmileStoriesPage() {
-  const [featured, ...rest] = blogs;
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("en-AU", {
+    day: "numeric", month: "long", year: "numeric",
+  });
+}
+
+type DisplayPost = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  category: string;
+  author: string;
+  publishedAt: string;
+  readTime?: string;
+  featured: boolean;
+  image?: string;
+};
+
+export default async function SmileStoriesPage() {
+  // Try Sanity first, fall back to static data
+  const sanityPosts = await client.fetch(postsQuery).catch(() => []);
+
+  const displayPosts: DisplayPost[] = sanityPosts.length > 0
+    ? sanityPosts.map((p: any) => ({
+        id: p._id,
+        slug: p.slug.current,
+        title: p.title,
+        excerpt: p.excerpt,
+        category: p.category ?? "General",
+        author: p.author ?? "",
+        publishedAt: p.publishedAt,
+        featured: p.featured ?? false,
+        image: p.featuredImage?.asset
+          ? `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production/${p.featuredImage.asset._ref?.replace("image-", "").replace("-jpg", ".jpg").replace("-png", ".png").replace("-webp", ".webp")}`
+          : undefined,
+      }))
+    : staticPosts.map((p) => ({
+        id: p.slug,
+        slug: p.slug,
+        title: p.title,
+        excerpt: p.excerpt,
+        category: p.category,
+        author: p.author,
+        publishedAt: p.publishedAt,
+        readTime: p.readTime,
+        featured: p.featured,
+        image: p.image,
+      }));
+
+  const featured = displayPosts.find((p) => p.featured) ?? displayPosts[0] ?? null;
+  const rest = displayPosts.filter((p) => p.id !== featured?.id);
 
   return (
     <>
       <PageHero
-        eyebrow="From Our Team"
-        title="Smile Stories"
-        subtitle="Real stories, expert advice and gentle guidance — everything you need to feel confident about your dental care."
+        eyebrow="Smile Stories"
+        title="Your Smile, Informed."
+        subtitle="Expert tips, honest answers and real stories — everything you need to make confident decisions about your dental health."
       />
 
-      <section className="py-24 bg-cream">
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
-
-          {/* Featured story */}
-          <Link href={`/smile-stories/${featured.slug}`} className="group block mb-16">
-            <div className="relative bg-forest noise overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-px bg-gold-gradient" />
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="p-10 lg:p-14 flex flex-col justify-center">
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="font-body text-xs text-champagne/60 uppercase tracking-widest">{featured.eyebrow}</span>
-                    <span className="w-6 h-px bg-champagne/30" />
-                    <span className="font-body text-xs text-champagne/40">{featured.category}</span>
-                  </div>
-                  <h2 className="font-display text-3xl lg:text-4xl text-cream font-light italic leading-tight mb-5 group-hover:text-champagne transition-colors">
-                    {featured.title}
-                  </h2>
-                  <p className="font-body text-sm text-cream/50 leading-relaxed mb-8">
-                    {featured.excerpt}
-                  </p>
-                  <div className="flex items-center gap-6">
-                    <span className="font-body text-xs text-cream/30">{featured.date}</span>
-                    <span className="w-px h-3 bg-champagne/20" />
-                    <span className="font-body text-xs text-cream/30">{featured.readTime}</span>
-                    <span className="ml-auto font-body text-xs text-champagne group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-                      Read story
-                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                      </svg>
-                    </span>
-                  </div>
+      {/* FEATURED */}
+      <section className="py-20 bg-cream">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-8">Featured Article</p>
+          {featured && (
+            <Link href={`/smile-stories/${featured.slug}`} className="group block bg-forest relative noise overflow-hidden">
+              {featured.image && (
+                <div className="absolute inset-0">
+                  <Image src={featured.image} alt={featured.title} fill
+                    className="object-cover opacity-25 group-hover:opacity-35 transition-opacity duration-500" />
                 </div>
-                <div className="hidden md:flex items-center justify-center bg-emerald/20 p-14">
-                  <div className="text-center">
-                    <div className="w-24 h-24 border border-champagne/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <svg className="w-10 h-10 text-champagne/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-                      </svg>
-                    </div>
-                    <p className="font-display text-cream/30 text-sm italic">Featured Story</p>
-                  </div>
+              )}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gold-gradient" />
+              <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/60 to-transparent" />
+              <div className="relative z-10 p-12 lg:p-16 max-w-2xl">
+                <span className={`inline-block font-body text-xs uppercase tracking-widest px-3 py-1 mb-6 ${categoryColours[featured.category] ?? "bg-emerald/10 text-emerald"}`}>
+                  {featured.category}
+                </span>
+                <h2 className="font-display text-3xl lg:text-4xl text-cream font-semibold leading-tight mb-4 group-hover:text-champagne transition-colors duration-300">
+                  {featured.title}
+                </h2>
+                <div className="w-10 h-px bg-champagne mb-5" />
+                <p className="font-body text-cream/60 text-base leading-relaxed mb-8">{featured.excerpt}</p>
+                <div className="flex items-center gap-6">
+                  <span className="font-body text-xs text-champagne uppercase tracking-widest font-semibold">Read Article →</span>
+                  <span className="font-body text-xs text-cream/30">{formatDate(featured.publishedAt)}</span>
+                  {featured.readTime && <span className="font-body text-xs text-cream/30">{featured.readTime}</span>}
                 </div>
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gold-gradient" />
-            </div>
-          </Link>
+            </Link>
+          )}
+        </div>
+      </section>
 
-          {/* Grid of remaining posts */}
-          {rest.length > 0 && (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* GRID */}
+      {rest.length > 0 && (
+        <section className="pb-20 bg-cream">
+          <div className="max-w-7xl mx-auto px-6 lg:px-10">
+            <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-8">Latest Articles</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               {rest.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/smile-stories/${post.slug}`}
-                  className="group relative bg-white border border-ink/8 overflow-hidden transition-shadow hover:shadow-lg"
-                >
-                  <div className={`h-1 ${post.accent}`} />
-                  <div className="p-7">
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="font-body text-xs text-ink/40 uppercase tracking-widest">{post.eyebrow}</span>
+                <Link key={post.id} href={`/smile-stories/${post.slug}`}
+                  className="group bg-white border border-ink/5 hover:border-champagne/30 transition-all duration-300 flex flex-col">
+                  {post.image ? (
+                    <div className="relative h-52 overflow-hidden">
+                      <Image src={post.image} alt={post.title} fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
-                    <h3 className="font-display text-xl text-ink font-medium leading-snug mb-3 group-hover:text-emerald transition-colors">
+                  ) : (
+                    <div className="h-52 bg-forest/20 flex items-center justify-center">
+                      <span className="font-display text-5xl text-champagne/20">✦</span>
+                    </div>
+                  )}
+                  <div className="p-8 flex flex-col flex-1">
+                    <span className={`inline-block font-body text-xs uppercase tracking-widest px-3 py-1 mb-4 self-start ${categoryColours[post.category] ?? "bg-emerald/10 text-emerald"}`}>
+                      {post.category}
+                    </span>
+                    <h3 className="font-display text-xl font-semibold text-ink leading-snug mb-3 group-hover:text-emerald transition-colors">
                       {post.title}
                     </h3>
-                    <p className="font-body text-sm text-ink/50 leading-relaxed mb-6 line-clamp-3">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between border-t border-ink/8 pt-4">
-                      <span className="font-body text-xs text-ink/30">{post.date} · {post.readTime}</span>
-                      <span className="font-body text-xs text-emerald inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Read
-                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                      </span>
+                    <div className="w-6 h-px bg-champagne mb-4 group-hover:w-10 transition-all" />
+                    <p className="font-body text-sm text-ink/50 leading-relaxed flex-1">{post.excerpt}</p>
+                    <div className="flex items-center justify-between mt-6 pt-4 border-t border-ink/5">
+                      <span className="font-body text-xs text-champagne uppercase tracking-widest font-semibold">Read More →</span>
+                      <div className="flex items-center gap-4">
+                        {post.readTime && <span className="font-body text-xs text-ink/30">{post.readTime}</span>}
+                        <span className="font-body text-xs text-ink/30">{formatDate(post.publishedAt)}</span>
+                      </div>
                     </div>
                   </div>
                 </Link>
               ))}
             </div>
-          )}
-
-          {/* CTA */}
-          <div className="mt-20 bg-forest relative noise p-10 text-center">
-            <div className="absolute top-0 left-0 right-0 h-px bg-gold-gradient" />
-            <h2 className="font-display text-2xl text-cream italic font-light mb-3">Have a Question?</h2>
-            <p className="font-body text-cream/50 text-sm mb-6">Our friendly team is always happy to help.</p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <a href="tel:0363110520" className="btn-gold">📞 (03) 6311 0520</a>
-              <a href="/contact-us" className="btn-outline-cream">Contact Us</a>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gold-gradient" />
           </div>
+        </section>
+      )}
 
+      {/* DIVIDER */}
+      <div className="bg-forest noise py-14">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <div className="flex items-center justify-center gap-4 mb-5">
+            <span className="w-10 h-px bg-champagne/40" />
+            <span className="w-2 h-2 bg-champagne rotate-45 block" />
+            <span className="w-10 h-px bg-champagne/40" />
+          </div>
+          <p className="font-display text-2xl text-cream font-light italic">&ldquo;The best dental treatment is the kind you never need.&rdquo;</p>
+          <p className="font-body text-cream/30 text-xs tracking-[0.3em] uppercase mt-4">Preventive dentistry — our philosophy</p>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <section className="py-20 bg-warm">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-3">Have a Question?</p>
+          <h2 className="font-display text-4xl font-light italic text-ink mb-4">Ask Our Team Directly</h2>
+          <span className="gold-rule mx-auto block mb-6" />
+          <p className="font-body text-ink/50 text-sm mb-8">Can&apos;t find what you&apos;re looking for? Our friendly team is happy to answer any dental question.</p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a href="tel:0363110520" className="btn-gold">📞 (03) 6311 0520</a>
+            <Link href="/contact-us" className="btn-outline-ink">Contact Us →</Link>
+          </div>
         </div>
       </section>
     </>
