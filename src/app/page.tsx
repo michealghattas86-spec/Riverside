@@ -109,18 +109,34 @@ export default function HomePage() {
     <>
       <Script id="schema-local-business" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      {/* ── HERO ───────────────────────────────────── */}
-      <section className="relative min-h-screen bg-ink flex items-center overflow-hidden noise pt-28">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-[55vw] h-full bg-forest clip-diagonal opacity-70" />
-          <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-emerald/20 blur-3xl" />
-          <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-champagne/5 blur-2xl" />
-        </div>
-        <div className="absolute top-1/4 left-1/2 w-px h-40 bg-gradient-to-b from-transparent via-champagne/30 to-transparent" />
-        <div className="absolute top-8 right-64 w-32 h-px bg-gradient-to-r from-transparent via-champagne/40 to-transparent" />
+      {/* ── HERO VIDEO ─────────────────────────────── */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[80vh]">
+        {/* Video background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+          <source src="https://videos.pexels.com/video-files/6003645/6003645-uhd_2560_1440_30fps.mp4" type="video/mp4" />
+        </video>
+
+        {/* Dark gradient overlay — heavier at top (behind nav) and bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/50 to-ink/75" />
+        {/* Subtle green tint overlay matching brand */}
+        <div className="absolute inset-0 bg-forest/30" />
+
+        {/* Decorative lines */}
+        <div className="absolute top-1/3 left-1/2 w-px h-32 bg-gradient-to-b from-transparent via-champagne/20 to-transparent" />
+        <div className="absolute top-10 right-64 w-24 h-px bg-gradient-to-r from-transparent via-champagne/30 to-transparent" />
+
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pt-32 pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-[70vh]">
+
             <div className="animate-fade-up">
               <p className="font-body text-champagne text-xs tracking-[0.4em] uppercase mb-6">
                 Riverside · Tasmania
@@ -130,7 +146,7 @@ export default function HomePage() {
                 <span className="block text-6xl sm:text-7xl lg:text-8xl font-semibold shimmer-text">No Gap.</span>
               </h1>
               <div className="w-16 h-px bg-champagne mb-8" />
-              <p className="font-body text-cream/60 text-lg leading-relaxed max-w-lg mb-10">
+              <p className="font-body text-cream/70 text-lg leading-relaxed max-w-lg mb-10">
                 Comprehensive dental care of the highest standard for patients of all ages — with extended hours, complete cost transparency, and no out-of-pocket gap for major health fund members.
               </p>
               <div className="flex flex-wrap gap-4">
@@ -145,14 +161,14 @@ export default function HomePage() {
 
             <div className="hidden lg:block animate-fade-up-delay">
               <div className="relative">
-                <div className="border border-champagne/20 bg-forest/60 backdrop-blur p-10">
+                <div className="border border-champagne/20 bg-ink/50 backdrop-blur-md p-10">
                   <div className="h-px bg-gold-gradient mb-8" />
-                  <p className="font-display text-cream/50 text-sm italic mb-6">
+                  <p className="font-display text-cream/60 text-sm italic mb-6">
                     "The type of clinic we would want to attend if we were the patient."
                   </p>
                   <div className="grid grid-cols-2 gap-px bg-champagne/10">
                     {stats.map((s) => (
-                      <div key={s.label} className="bg-forest/80 p-6 text-center">
+                      <div key={s.label} className="bg-forest/70 backdrop-blur p-6 text-center">
                         <p className="font-display text-champagne text-4xl font-semibold">{s.value}</p>
                         <p className="font-body text-cream/40 text-xs uppercase tracking-widest mt-1">{s.label}</p>
                       </div>
@@ -166,6 +182,7 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* Scroll indicator */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/30">
             <p className="font-body text-xs tracking-widest uppercase">Scroll</p>
             <div className="w-px h-10 bg-gradient-to-b from-cream/30 to-transparent" />
