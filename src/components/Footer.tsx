@@ -14,8 +14,8 @@ export default function Footer() {
             <Image
               src="/logo.png"
               alt="Riverside No Gap Dental"
-              width={180}
-              height={60}
+              width={440}
+              height={140}
               className="h-12 w-auto object-contain"
             />
           </div>
