@@ -144,7 +144,7 @@ export const posts: BlogPost[] = [
     publishedAt: "2025-03-08",
     readTime: "7 min read",
     featured: false,
-    image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-15982f56989800-fe5f95da9787?w=1200&q=80",
     body: [
       {
         type: "lead",
