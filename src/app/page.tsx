@@ -126,9 +126,9 @@ export default function HomePage() {
         <div className="absolute top-10 right-64 w-24 h-px bg-gradient-to-r from-transparent via-champagne/30 to-transparent" />
 
         {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pt-32 pb-24">
-          {/* Hero text */}
-          <div className="min-h-[65vh] flex flex-col justify-center max-w-2xl animate-fade-up">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pt-32 flex flex-col min-h-screen">
+          {/* Hero text — grows to fill available space */}
+          <div className="flex-1 flex flex-col justify-center max-w-2xl animate-fade-up py-16">
             <p className="font-body text-champagne text-xs tracking-[0.4em] uppercase mb-6">
               Riverside · Tasmania
             </p>
@@ -137,10 +137,14 @@ export default function HomePage() {
               <span className="block text-6xl sm:text-7xl lg:text-8xl font-semibold shimmer-text">No Gap.</span>
             </h1>
             <div className="w-16 h-px bg-champagne mb-8" />
-            <p className="font-body text-cream/70 text-lg leading-relaxed max-w-lg mb-10">
+            <p className="font-body text-cream/70 text-lg leading-relaxed max-w-lg">
               Comprehensive dental care of the highest standard for patients of all ages — with extended hours, complete cost transparency, and no out-of-pocket gap for major health fund members.
             </p>
-            <div className="flex flex-wrap gap-4">
+          </div>
+
+          {/* CTA buttons + Stats bar — pinned to the bottom of the video */}
+          <div className="pb-0">
+            <div className="flex flex-wrap gap-4 mb-8">
               <a href="tel:0363110520" className="btn-gold">
                 Call (03) 6311 0520
               </a>
@@ -148,22 +152,16 @@ export default function HomePage() {
                 Book Appointment
               </Link>
             </div>
-          </div>
 
-          {/* Stats bar — 4-column horizontal */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-champagne/15 mb-16">
-            {stats.map((s) => (
-              <div key={s.label} className="bg-forest/60 backdrop-blur-sm px-8 py-7 text-center">
-                <p className="font-display text-champagne text-4xl lg:text-5xl font-semibold leading-none mb-2">{s.value}</p>
-                <p className="font-body text-cream/50 text-xs uppercase tracking-[0.2em]">{s.label}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-cream/30">
-            <p className="font-body text-xs tracking-widest uppercase">Scroll</p>
-            <div className="w-px h-10 bg-gradient-to-b from-cream/30 to-transparent" />
+            {/* Stats bar — 4-column horizontal */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-champagne/15">
+              {stats.map((s) => (
+                <div key={s.label} className="bg-forest/60 backdrop-blur-sm px-8 py-7 text-center">
+                  <p className="font-display text-champagne text-4xl lg:text-5xl font-semibold leading-none mb-2">{s.value}</p>
+                  <p className="font-body text-cream/50 text-xs uppercase tracking-[0.2em]">{s.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
