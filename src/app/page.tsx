@@ -120,7 +120,7 @@ export default function HomePage() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="https://videos.pexels.com/video-files/3195394/3195394-uhd_2560_1440_25fps.mp4" type="video/mp4" />
+          <source src="/myvideo.mp4" type="video/mp4" />
           <source src="https://videos.pexels.com/video-files/6003645/6003645-uhd_2560_1440_30fps.mp4" type="video/mp4" />
         </video>
 
