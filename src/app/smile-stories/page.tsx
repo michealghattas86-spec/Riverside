@@ -1,11 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
-import { client } from "@/sanity/lib/client";
-import { postsQuery } from "@/sanity/lib/queries";
 import { posts as staticPosts } from "@/data/blog";
-
-export const revalidate = 60;
 
 const categoryColours: Record<string, string> = {
   "Preventive Care":    "bg-emerald/10 text-emerald",
@@ -24,52 +20,9 @@ function formatDate(iso: string) {
   });
 }
 
-type DisplayPost = {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  author: string;
-  publishedAt: string;
-  readTime?: string;
-  featured: boolean;
-  image?: string;
-};
-
-export default async function SmileStoriesPage() {
-  // Try Sanity first, fall back to static data
-  const sanityPosts = await client.fetch(postsQuery).catch(() => []);
-
-  const displayPosts: DisplayPost[] = sanityPosts.length > 0
-    ? sanityPosts.map((p: any) => ({
-        id: p._id,
-        slug: p.slug.current,
-        title: p.title,
-        excerpt: p.excerpt,
-        category: p.category ?? "General",
-        author: p.author ?? "",
-        publishedAt: p.publishedAt,
-        featured: p.featured ?? false,
-        image: p.featuredImage?.asset
-          ? `https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/production/${p.featuredImage.asset._ref?.replace("image-", "").replace("-jpg", ".jpg").replace("-png", ".png").replace("-webp", ".webp")}`
-          : undefined,
-      }))
-    : staticPosts.map((p) => ({
-        id: p.slug,
-        slug: p.slug,
-        title: p.title,
-        excerpt: p.excerpt,
-        category: p.category,
-        author: p.author,
-        publishedAt: p.publishedAt,
-        readTime: p.readTime,
-        featured: p.featured,
-        image: p.image,
-      }));
-
-  const featured = displayPosts.find((p) => p.featured) ?? displayPosts[0] ?? null;
-  const rest = displayPosts.filter((p) => p.id !== featured?.id);
+export default function SmileStoriesPage() {
+  const featured = staticPosts.find((p) => p.featured) ?? staticPosts[0] ?? null;
+  const rest = staticPosts.filter((p) => p.slug !== featured?.slug);
 
   return (
     <>
@@ -119,9 +72,9 @@ export default async function SmileStoriesPage() {
         <section className="pb-20 bg-cream">
           <div className="max-w-7xl mx-auto px-6 lg:px-10">
             <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-8">Latest Articles</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {rest.map((post) => (
-                <Link key={post.id} href={`/smile-stories/${post.slug}`}
+                <Link key={post.slug} href={`/smile-stories/${post.slug}`}
                   className="group bg-white border border-ink/5 hover:border-champagne/30 transition-all duration-300 flex flex-col">
                   {post.image ? (
                     <div className="relative h-52 overflow-hidden">
