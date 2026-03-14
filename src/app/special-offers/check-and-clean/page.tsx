@@ -33,7 +33,7 @@ export default function CheckAndCleanPage() {
             <div className="space-y-4 font-body text-ink/60 text-sm leading-relaxed">
               <p>At Riverside No Gap Dental, our focus is on prevention and bringing affordable family dentistry to all families.</p>
               <p>This offer includes <strong className="text-ink">exam, scale & clean, fluoride treatment and routine X-ray</strong>.</p>
-              <p>Maintaining good oral health for your family does not have to be a financial burden.</p>
+              <p>Maintaining good oral health for your family does not have to be a financial burden</p>
               <a href="tel:0363110520" className="btn-gold inline-flex mt-4">📞 Book Today</a>
             </div>
           </div>
