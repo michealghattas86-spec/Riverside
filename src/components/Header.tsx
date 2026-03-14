@@ -153,7 +153,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center group">
           <Image
-            src="/logo.png"
+            src="/logo.jpg"
             alt="Riverside No Gap Dental"
             width={220}
             height={70}
