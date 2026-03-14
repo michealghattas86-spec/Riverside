@@ -9,11 +9,64 @@ const nav = [
     label: "Services",
     href: "/services",
     children: [
-      { label: "General Dentistry", href: "/services/general-dentistry", sub: "Check-ups, fillings, root canals" },
-      { label: "Cosmetic Dentistry", href: "/services/cosmetic-dentistry", sub: "Whitening, veneers, smile makeovers" },
-      { label: "Dental Implants", href: "/services/dental-implants", sub: "Permanent tooth replacement" },
-      { label: "Invisalign", href: "/services/invisalign", sub: "Discreet clear aligners" },
-      { label: "Children's Dentistry", href: "/services/childrens-dentistry", sub: "Gentle care — bulk bill CDBS" },
+      {
+        label: "General Dentistry",
+        href: "/services/general-dentistry",
+        sub: "Check-ups, fillings & more",
+        grandchildren: [
+          { label: "Anxious Dental Patients", href: "/services/general-dentistry/anxious-patients" },
+          { label: "Dental Fillings", href: "/services/general-dentistry/dental-fillings" },
+          { label: "General Check Up & Clean", href: "/services/general-dentistry/check-up-and-clean" },
+          { label: "Gum & Bone Disease", href: "/services/general-dentistry/gum-and-bone-disease" },
+          { label: "Wisdom Tooth Removal", href: "/services/general-dentistry/wisdom-tooth-removal" },
+          { label: "Dental Sleep Medicine", href: "/services/general-dentistry/dental-sleep-medicine" },
+        ],
+      },
+      {
+        label: "Cosmetic Dentistry",
+        href: "/services/cosmetic-dentistry",
+        sub: "Whitening, veneers, smile makeovers",
+        grandchildren: [
+          { label: "Composite Veneers", href: "/services/cosmetic-dentistry/composite-veneers" },
+          { label: "Porcelain Veneers", href: "/services/cosmetic-dentistry/porcelain-veneers" },
+          { label: "Teeth Whitening", href: "/services/cosmetic-dentistry/teeth-whitening" },
+          { label: "Smile Makeover", href: "/services/cosmetic-dentistry/smile-makeover" },
+        ],
+      },
+      {
+        label: "Restorative Dentistry",
+        href: "/services/restorative-dentistry",
+        sub: "Implants, crowns & rebuilding smiles",
+        grandchildren: [
+          { label: "Dental Implants", href: "/services/restorative-dentistry/dental-implants" },
+          { label: "Dental Crowns", href: "/services/restorative-dentistry/dental-crowns" },
+        ],
+      },
+      {
+        label: "Orthodontics",
+        href: "/services/orthodontics",
+        sub: "Braces & clear aligners",
+        grandchildren: [
+          { label: "Braces", href: "/services/orthodontics/braces" },
+          { label: "Clear Aligners", href: "/services/orthodontics/clear-aligners" },
+        ],
+      },
+      {
+        label: "Emergency Dentistry",
+        href: "/services/emergency-dentistry",
+        sub: "Urgent same-day dental care",
+        grandchildren: [
+          { label: "Tooth Pain Treatment", href: "/services/emergency-dentistry/tooth-pain-treatment" },
+          { label: "Broken & Cracked Teeth", href: "/services/emergency-dentistry/broken-cracked-teeth" },
+          { label: "Urgent Dental Care", href: "/services/emergency-dentistry/urgent-dental-care" },
+        ],
+      },
+      {
+        label: "Children's Dentistry",
+        href: "/services/childrens-dentistry",
+        sub: "Gentle care — bulk bill CDBS",
+        grandchildren: [],
+      },
     ],
   },
   {
@@ -97,19 +150,43 @@ export default function Header() {
                   </svg>
                 </Link>
                 {dropdown === item.label && (
-                  <div className="absolute top-full left-0 w-64 pt-3">
+                  <div className={`absolute top-full left-0 pt-3 ${item.label === "Services" ? "w-[720px]" : "w-64"}`}>
                     <div className="bg-forest border border-champagne/20 shadow-2xl">
                       <div className="h-px bg-gold-gradient" />
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          className="block px-5 py-4 border-b border-champagne/10 hover:bg-emerald/40 transition-colors group"
-                        >
-                          <p className="font-body text-sm text-cream group-hover:text-champagne transition-colors">{child.label}</p>
-                          <p className="font-body text-xs text-cream/50 mt-0.5">{child.sub}</p>
-                        </Link>
-                      ))}
+                      {item.label === "Services" ? (
+                        <div className="grid grid-cols-3 gap-0">
+                          {item.children.map((child) => (
+                            <div key={child.href} className="border-r border-champagne/10 last:border-r-0">
+                              <Link
+                                href={child.href}
+                                className="block px-4 py-3 bg-emerald/20 border-b border-champagne/20 hover:bg-emerald/50 transition-colors group"
+                              >
+                                <p className="font-body text-xs font-semibold text-champagne uppercase tracking-wider group-hover:text-gold transition-colors">{child.label}</p>
+                              </Link>
+                              {child.grandchildren && child.grandchildren.map((gc) => (
+                                <Link
+                                  key={gc.href}
+                                  href={gc.href}
+                                  className="block px-4 py-2.5 border-b border-champagne/10 hover:bg-emerald/40 transition-colors group"
+                                >
+                                  <p className="font-body text-xs text-cream/80 group-hover:text-champagne transition-colors">{gc.label}</p>
+                                </Link>
+                              ))}
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        item.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="block px-5 py-4 border-b border-champagne/10 hover:bg-emerald/40 transition-colors group"
+                          >
+                            <p className="font-body text-sm text-cream group-hover:text-champagne transition-colors">{child.label}</p>
+                            <p className="font-body text-xs text-cream/50 mt-0.5">{child.sub}</p>
+                          </Link>
+                        ))
+                      )}
                     </div>
                   </div>
                 )}
@@ -165,16 +242,31 @@ export default function Header() {
                 )}
               </button>
               {item.children && mobileExpanded === item.label && (
-                <div className="pb-3 pl-4 space-y-2">
+                <div className="pb-3 pl-4 space-y-1">
                   {item.children.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className="block py-1.5 text-xs text-cream/60 hover:text-champagne transition-colors"
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {child.label}
-                    </Link>
+                    <div key={child.href}>
+                      <Link
+                        href={child.href}
+                        className="block py-2 text-xs font-semibold text-champagne/80 hover:text-champagne uppercase tracking-wide transition-colors"
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {child.label}
+                      </Link>
+                      {child.grandchildren && child.grandchildren.length > 0 && (
+                        <div className="pl-3 space-y-1 mb-2">
+                          {child.grandchildren.map((gc) => (
+                            <Link
+                              key={gc.href}
+                              href={gc.href}
+                              className="block py-1 text-xs text-cream/50 hover:text-champagne transition-colors"
+                              onClick={() => setMobileOpen(false)}
+                            >
+                              {gc.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               )}
