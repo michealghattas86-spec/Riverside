@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
@@ -12,7 +15,10 @@ const categoryColours: Record<string, string> = {
   "Teeth Whitening":    "bg-champagne/10 text-champagne",
   "Service Spotlight":  "bg-champagne/10 text-champagne",
   "Ask the Dentist":    "bg-emerald/10 text-emerald",
+  "Patient Experience": "bg-sage/10 text-sage",
 };
+
+const POSTS_PER_PAGE = 6;
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-AU", {
@@ -23,6 +29,20 @@ function formatDate(iso: string) {
 export default function SmileStoriesPage() {
   const featured = staticPosts.find((p) => p.featured) ?? staticPosts[0] ?? null;
   const rest = staticPosts.filter((p) => p.slug !== featured?.slug);
+
+  const totalPages = Math.ceil(rest.length / POSTS_PER_PAGE);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const paginated = rest.slice(
+    (currentPage - 1) * POSTS_PER_PAGE,
+    currentPage * POSTS_PER_PAGE
+  );
+
+  function goToPage(page: number) {
+    setCurrentPage(page);
+    // Scroll back up to the grid section smoothly
+    document.getElementById("articles-grid")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   return (
     <>
@@ -69,11 +89,19 @@ export default function SmileStoriesPage() {
 
       {/* GRID */}
       {rest.length > 0 && (
-        <section className="pb-20 bg-cream">
+        <section id="articles-grid" className="pb-20 bg-cream scroll-mt-8">
           <div className="max-w-7xl mx-auto px-6 lg:px-10">
-            <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase mb-8">Latest Articles</p>
+            <div className="flex items-center justify-between mb-8">
+              <p className="font-body text-champagne text-xs tracking-[0.3em] uppercase">Latest Articles</p>
+              {totalPages > 1 && (
+                <p className="font-body text-xs text-ink/30">
+                  Page {currentPage} of {totalPages}
+                </p>
+              )}
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {rest.map((post) => (
+              {paginated.map((post) => (
                 <Link key={post.slug} href={`/smile-stories/${post.slug}`}
                   className="group bg-white border border-ink/5 hover:border-champagne/30 transition-all duration-300 flex flex-col">
                   {post.image ? (
@@ -106,6 +134,41 @@ export default function SmileStoriesPage() {
                 </Link>
               ))}
             </div>
+
+            {/* PAGINATION */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-12">
+                <button
+                  onClick={() => goToPage(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="font-body text-xs uppercase tracking-widest px-4 py-2 border border-ink/10 text-ink/40 hover:border-champagne hover:text-champagne transition-all disabled:opacity-25 disabled:cursor-not-allowed"
+                >
+                  ← Prev
+                </button>
+
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => goToPage(page)}
+                    className={`font-body text-xs uppercase tracking-widest w-9 h-9 border transition-all ${
+                      page === currentPage
+                        ? "border-champagne bg-champagne text-ink font-semibold"
+                        : "border-ink/10 text-ink/40 hover:border-champagne hover:text-champagne"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+
+                <button
+                  onClick={() => goToPage(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="font-body text-xs uppercase tracking-widest px-4 py-2 border border-ink/10 text-ink/40 hover:border-champagne hover:text-champagne transition-all disabled:opacity-25 disabled:cursor-not-allowed"
+                >
+                  Next →
+                </button>
+              </div>
+            )}
           </div>
         </section>
       )}
