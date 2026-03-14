@@ -97,6 +97,47 @@ const nav: NavItem[] = [
   { label: "Contact", href: "/contact-us" },
 ];
 
+function ServicesChildItem({ child }: { child: NavChild }) {
+  const [hovered, setHovered] = useState(false);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => { if (timer.current) clearTimeout(timer.current); setHovered(true); }}
+      onMouseLeave={() => { timer.current = setTimeout(() => setHovered(false), 100); }}
+    >
+      <Link
+        href={child.href}
+        className={`flex items-center justify-between px-5 py-3.5 border-b border-champagne/10 transition-colors group ${hovered ? "bg-emerald/40" : "hover:bg-emerald/20"}`}
+      >
+        <p className={`font-body text-sm transition-colors ${hovered ? "text-champagne" : "text-cream/80"}`}>{child.label}</p>
+        {child.grandchildren && child.grandchildren.length > 0 && (
+          <svg className={`w-3 h-3 flex-shrink-0 transition-colors ${hovered ? "text-champagne" : "text-cream/40"}`} fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
+          </svg>
+        )}
+      </Link>
+      {hovered && child.grandchildren && child.grandchildren.length > 0 && (
+        <div className="absolute top-0 left-full w-56 pl-px">
+          <div className="bg-forest border border-champagne/20 shadow-2xl">
+            <div className="h-px bg-gold-gradient" />
+            {child.grandchildren.map((gc) => (
+              <Link
+                key={gc.href}
+                href={gc.href}
+                className="block px-5 py-3 border-b border-champagne/10 hover:bg-emerald/40 transition-colors group"
+              >
+                <p className="font-body text-xs text-cream/80 group-hover:text-champagne transition-colors">{gc.label}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -154,29 +195,13 @@ export default function Header() {
                   </svg>
                 </Link>
                 {dropdown === item.label && (
-                  <div className={`absolute top-full left-0 pt-3 ${item.label === "Services" ? "w-[720px]" : "w-64"}`}>
-                    <div className="bg-forest border border-champagne/20 shadow-2xl">
+                  <div className={`absolute top-full left-0 pt-3 ${item.label === "Services" ? "w-56" : "w-64"}`}>
+                    <div className="bg-forest border border-champagne/20 shadow-2xl relative">
                       <div className="h-px bg-gold-gradient" />
                       {item.label === "Services" ? (
-                        <div className="grid grid-cols-3 gap-0">
+                        <div>
                           {item.children.map((child) => (
-                            <div key={child.href} className="border-r border-champagne/10 last:border-r-0">
-                              <Link
-                                href={child.href}
-                                className="block px-4 py-3 bg-emerald/20 border-b border-champagne/20 hover:bg-emerald/50 transition-colors group"
-                              >
-                                <p className="font-body text-xs font-semibold text-champagne uppercase tracking-wider group-hover:text-gold transition-colors">{child.label}</p>
-                              </Link>
-                              {child.grandchildren && child.grandchildren.map((gc) => (
-                                <Link
-                                  key={gc.href}
-                                  href={gc.href}
-                                  className="block px-4 py-2.5 border-b border-champagne/10 hover:bg-emerald/40 transition-colors group"
-                                >
-                                  <p className="font-body text-xs text-cream/80 group-hover:text-champagne transition-colors">{gc.label}</p>
-                                </Link>
-                              ))}
-                            </div>
+                            <ServicesChildItem key={child.href} child={child} />
                           ))}
                         </div>
                       ) : (
